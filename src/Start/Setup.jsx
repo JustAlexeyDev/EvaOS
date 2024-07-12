@@ -23,6 +23,13 @@ const Setup = (Page) => {
         setSetup(false);
     }
 
+    const Login = (e) => {
+        e.preventDefault();
+        if (code.value == localStorage.getItem("password")) {
+            window.location.href = "/Login";
+        } 
+    }
+
     const signin = () => {
         setUsername(usernameform.value);
         setPassword(passwordform.value);
@@ -62,6 +69,13 @@ const Setup = (Page) => {
                         )}
                     </div>
                 </div>
+
+                <form className="Setup--NavBar">
+                    <input id="code" type="text" placeholder="code"/>
+                    <button onClick={Login}>Enter</button>
+                </form>
+
+
 
                 <div className="Setup--NavBar">
                     <button onClick={Cancle}>Cancle</button>
