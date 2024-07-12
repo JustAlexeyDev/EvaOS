@@ -1,5 +1,5 @@
-import data from "../data.json";
-import Reacr, {useEffect, useState} from "react";
+
+import React, {useEffect, useState} from "react";
 
 const Login = () => {
     const [error, setError] = useState("___");
