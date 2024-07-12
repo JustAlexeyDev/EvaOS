@@ -15,12 +15,12 @@ const Bsod = () => {
 
     useEffect(() => {
         setDeviceInfo({
-            "Пользовательский Агент": navigator.userAgent,
-            "Платформа": navigator.platform,
-            "Язык клиента": navigator.language,
-            "Аппаратный Параллелизм": navigator.hardwareConcurrency,
-            "Включены печеньки?": navigator.cookieEnabled ? 'Yes' : 'No',
-            "Максимальное количество точек соприкосновения": navigator.maxTouchPoints,
+            "User Agent": navigator.userAgent,
+            "Platform": navigator.platform,
+            "User Language": navigator.language,
+            "Hardware Parallelism": navigator.hardwareConcurrency,
+            "Cookies allowed?": navigator.cookieEnabled ? 'Yes' : 'No',
+            "Maximum number of contact points": navigator.maxTouchPoints,
         });
     }, []);
 
