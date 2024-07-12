@@ -1,0 +1,30 @@
+/* RightMenu.css */
+.right-menu {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+  }
+  
+  .right-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .right-menu li {
+    margin: 10px 0;
+  }
+  
+  .right-menu a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .right-menu a:hover {
+    text-decoration: underline;
+  }
