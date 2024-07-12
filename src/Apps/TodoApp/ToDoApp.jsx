@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WindowManager from '../WindowManager';
+import WindowManager from '../../Managers/WindowManager';
 import "./style.css"
 
 const TodoApp = () => {

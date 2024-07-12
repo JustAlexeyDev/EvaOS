@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
 import Bsod from "./Pages/Bsod";
 import Desktop from "./Pages/Desktop";
-import Setup from "./Manager/Setup";
+import Setup from "./Start/Setup";
 
 const App = () => {
     return(
