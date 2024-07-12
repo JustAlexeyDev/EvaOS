@@ -36,9 +36,7 @@ const Setup = (Page) => {
         setFogotQuestion(fogotQuestionFrom.value);
         if(username && password) {
             Start();
-        } else {
-            alert("Enter valid data");
-        }
+        } 
     }
     return(
         <div className="setup">
