@@ -2,6 +2,7 @@
 import Notepad from "../Apps/Note/Notepad";
 import React, {useState, useEffect} from "react";
 import TodoApp from "../Apps/TodoApp/ToDoApp";
+import Settings from "../Apps/Settings/Settings";
 
 const DesktopApps = () => {
 
@@ -9,6 +10,7 @@ const DesktopApps = () => {
         <div className="DesktopApps">
             <Notepad />
             <TodoApp />
+            <Settings />
         </div>
     );
 }
