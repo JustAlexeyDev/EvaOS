@@ -74,6 +74,7 @@ form {
 .sddm--container form {
     display: flex;
     gap: 20px;
+    color: white;
 }
 .sddm--container input {
     background-color: rgba(0, 0, 0, 0);
@@ -81,6 +82,7 @@ form {
     padding: 8px;
     border-radius: 9999px;
     border: 1px solid #ffffff98;
+    color: white;
 }
 .Desktop {
     position: fixed;

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Login from "./Pages/Login";
-import Bsod from "./Pages/Bsod";
+import Bsod from "./Errors/Bsod";
 import Desktop from "./Pages/Desktop";
 import Setup from "./Start/Setup";
 
