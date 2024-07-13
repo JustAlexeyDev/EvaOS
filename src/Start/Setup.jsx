@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './style.css';
+import LoginChecker from "../Secure/LoginChecker";
 
 const Setup = (Page) => {
     const [setup, setSetup] = useState(false)
@@ -42,6 +43,7 @@ const Setup = (Page) => {
         <div className="setup">
 
             <div className="Setup--Container">
+                <p>SDDM.process.setupSystem.manager</p>
                 <div className="Setup--Container--Box">
                     <div>
                         <h1>Добро пожаловать в EvaOS!</h1>
@@ -80,7 +82,7 @@ const Setup = (Page) => {
                     <button onClick={signin} className="Accent--Button">Установить систему</button>
                 </div>
             </div>
-
+            <LoginChecker />
         </div>
     );
 }

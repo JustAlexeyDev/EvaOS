@@ -7,12 +7,12 @@ const root = ReactDOM.createRoot(container);
 
 import './Assets/Css/Global.css';
 import './Assets/Css/Reset.css';
-import App from "./App";
+import Core from "./Core";
 
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <Core />
         </BrowserRouter>
     </React.StrictMode>
 )
