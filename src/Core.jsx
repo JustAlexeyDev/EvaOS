@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Login from "./Screens/Login";
 import Bsod from "./Api/Libs/VioletClientManager/Core/Managers/Errors/Bsod";
