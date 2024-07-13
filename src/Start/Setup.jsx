@@ -44,40 +44,40 @@ const Setup = (Page) => {
             <div className="Setup--Container">
                 <div className="Setup--Container--Box">
                     <div>
-                        <h1>Welcome to EvaOS!</h1>
-                        <p>This is web os created on react.js</p>
-                        <p>Enter your username and password:</p>                        
+                        <h1>Добро пожаловать в EvaOS!</h1>
+                        <p>Эта система написана на ReactJS и поддерживается по лицензии MIT</p>
+                        <p>Введите ваше имя и пароль от новой учетной записи. В случаи если это окно появилось случано, в поле Код напишиет пароль от уже существующей учетной записи.:</p>                        
                     </div>
 
                     {!setup && (
                         <form require>
-                            <p>Enter your name:</p>
+                            <p>Введите ваше имя:</p>
                             <input id="usernameform" type="text" placeholder="Username"/>
-                            <p>Enter password:</p>
+                            <p>Введите пароль:</p>
                             <input id="passwordform" type="password" placeholder="Password" />
-                            <p>Enter fogot question:</p>
-                            <input id="fogotQuestionFrom" placeholder="what is name of your first pet?" type="text" />
+                            <p>Введите имя вашего первого питомца:</p>
+                            <input id="fogotQuestionFrom" placeholder="Какое имя у вашего первого питомца?" type="text" />
                         </form>
                     )}
                     <div>
                         {loading && (
                             <div>
-                                Loading..
+                                Загрузка..
                             </div>
                         )}
                     </div>
                 </div>
 
                 <form className="Setup--NavBar">
-                    <input id="code" type="text" placeholder="code"/>
-                    <button onClick={Login}>Enter</button>
+                    <input id="code" type="text" placeholder="Код"/>
+                    <button onClick={Login}>Войти</button>
                 </form>
 
 
 
                 <div className="Setup--NavBar">
-                    <button onClick={Cancle}>Cancle</button>
-                    <button onClick={signin} className="Accent--Button">Next</button>
+                    <button onClick={Cancle}>Отмена</button>
+                    <button onClick={signin} className="Accent--Button">Установить систему</button>
                 </div>
             </div>
 
