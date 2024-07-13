@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import Login from "./Screens/Login";
-import Bsod from "./Errors/Bsod";
+import Bsod from "./Api/Libs/VioletClientManager/Core/Managers/Errors/Bsod";
 import Desktop from "./Screens/Desktop";
-import Setup from "./Start/Setup";
+import Setup from "./Api/Libs/VioletClientManager/Core/Start/Setup";
 
 const Core = () => {
     return (
