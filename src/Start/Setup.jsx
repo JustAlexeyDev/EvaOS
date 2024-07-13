@@ -3,7 +3,7 @@ import './style.css';
 import LoginChecker from "../Secure/LoginChecker";
 
 const Setup = (Page) => {
-    const [setup, setSetup] = useState(false)
+    const [setup, setSetup] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const Setup = (Page) => {
             localStorage.setItem("fogotQuestion", fogotQuestion);
             setTimeout(() => {
                 window.location.href = "/Login";
-            }, 2000) 
+            }, 2000);
 
     }
     const Cancle = () => {
@@ -74,8 +74,6 @@ const Setup = (Page) => {
                     <input id="code" type="text" placeholder="Код"/>
                     <button onClick={Login}>Войти</button>
                 </form>
-
-
 
                 <div className="Setup--NavBar">
                     <button onClick={Cancle}>Отмена</button>
