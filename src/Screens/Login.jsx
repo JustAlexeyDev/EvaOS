@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 
 const Login = () => {
-    const [error, setError] = useState("___");
+    const [error, setError] = useState("");
     const [fogotForm, setFogotForm] = useState(false);
 
     const handleLogin = (e) => {
@@ -30,11 +30,11 @@ const Login = () => {
                     <h1>Добро Пожаловать, {localStorage.getItem("user")}!</h1>
                 </div>
                 <form onSubmit={handleLogin}>
-                    <input type="password" id="password" />
-                    <button type="submit">Enter</button>
+                    <input type="password" id="password" placeholder="Введите пароль.."/>
+                    <button className="white" type="submit">Войти</button>
                 </form>
                 {error}
-                <button onClick={setFogotForm}>Fogot password?</button>
+                <button className="white" onClick={setFogotForm}>Забыли пароль?</button>
                 {
                     fogotForm && (
                         <form>
