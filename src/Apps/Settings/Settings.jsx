@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WindowManager from '../../Managers/WindowManager';
-import './Style.css';
 import SystemInfo from '../../Managers/Debug/SystemInfo';
+import './Style.css';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
