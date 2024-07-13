@@ -45,7 +45,7 @@ const Setup = (Page) => {
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
-            navigate("/Login");
+            navigate("/error");
         }
     }, [navigate]);    
 
