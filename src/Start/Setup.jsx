@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {useNavigate } from "react-router-dom";
 import './style.css';
-import LoginChecker from "../Secure/LoginChecker";
+// import LoginChecker from "../Secure/LoginChecker";
 
 const Setup = (Page) => {
+
+    const navigate = useNavigate();
     const [setup, setSetup] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -39,6 +42,13 @@ const Setup = (Page) => {
             Start();
         } 
     }
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            navigate("/Login");
+        }
+    }, [navigate]);    
+
     return(
         <div className="setup">
 
@@ -80,7 +90,6 @@ const Setup = (Page) => {
                     <button onClick={signin} className="Accent--Button">Установить систему</button>
                 </div>
             </div>
-            <LoginChecker />
         </div>
     );
 }
