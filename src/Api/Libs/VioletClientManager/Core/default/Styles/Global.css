@@ -1,5 +1,8 @@
 :root {
-    --accent--color: #a915df;
+    --accent--color: #ab5af2;
+    --light--text--color: #fff;
+    --dark--text--color: #1d1d1d;
+    --accent--color--hover: #9a53d9;
     --background--image: url(../../../../../../Env/Images/wallpaper.jpg);
 }
 body {
