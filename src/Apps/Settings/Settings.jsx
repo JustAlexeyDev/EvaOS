@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import WindowManager from '../../Managers/WindowManager';
 import './Style.css';
+import SystemInfo from '../../Managers/Debug/SystemInfo';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [text, setText] = useState('');
   const [ Account, setAccount] = useState(false);
   const [Personalization, setPersonalization] = useState(false);
+  const [SystemMonitor, setSystemMonitor] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -23,10 +25,17 @@ const Settings = () => {
   const AccountPage = () => {
     setAccount(true);
     setPersonalization(false);
+    setSystemMonitor(false);
   }
   const PersonalizationPage = () => {
     setPersonalization(true);
     setAccount(false);
+    setSystemMonitor(false);
+  }
+  const SystemMonitorPage = () => {
+    setPersonalization(false);
+    setAccount(false);
+    setSystemMonitor(true);
   }
 
   return (
@@ -42,6 +51,7 @@ const Settings = () => {
                 <nav>
                     <button onClick={AccountPage}>Аккаунт</button>
                     <button onClick={PersonalizationPage}>Персонализация</button>
+                    <button onClick={SystemMonitorPage}>Системный монитор</button>
                 </nav>
                 <div>
                     {Account && (
@@ -53,6 +63,11 @@ const Settings = () => {
                         <div>
                             <p>Обои</p>
                         </div>
+                    )}
+                    {SystemMonitor && (
+                      <div className="Settings--Page--Options">
+                          <SystemInfo />
+                      </div>
                     )}
                 </div>
             </div>
