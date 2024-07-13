@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import WindowManager from '../../Managers/WindowManager';
-import SystemInfo from '../../Managers/Debug/SystemInfo';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/WindowManager';
+import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
 import './Style.css';
 
 const Settings = () => {

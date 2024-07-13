@@ -1,5 +1,6 @@
 :root {
     --accent--color: #a915df;
+    --background--image: url(../../../../../../Env/Images/wallpaper.jpg);
 }
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -56,7 +57,7 @@ form {
     top: 0;
     display: flex;
     flex-direction: column;
-    background-image: url(../Images/wallpaper.jpg);
+    background-image: var(--background--image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -99,7 +100,7 @@ form {
     top: 0;
     display: flex;
     flex-direction: column;
-    background-image: url(../Images/wallpaper.jpg);
+    background-image: var(--background--image);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
