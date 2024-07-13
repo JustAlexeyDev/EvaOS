@@ -62,7 +62,7 @@ input, textarea, button, select {
   font-size: inherit;
   background-color: rgba(0, 0, 0, 0);
 }
-
+	
 input::-ms-clear {
 	display: none;
 }
