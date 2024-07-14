@@ -1,5 +1,6 @@
 
 import React, {useEffect, useState} from "react";
+import PasswordChecker from '../Api/Libs/VioletClientManager/Core/Scripts/Security/PasswordChecker';
 
 const Login = () => {
     const [error, setError] = useState("");
@@ -14,6 +15,7 @@ const Login = () => {
             setError("Wrong password!");
         }
     }
+
 
     const FogotF = (e) => {
         e.preventDefault();
@@ -44,6 +46,7 @@ const Login = () => {
                     )
                 }
             </div>
+            <PasswordChecker />
         </div>
     );
 }
