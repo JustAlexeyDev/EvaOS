@@ -1,9 +1,11 @@
 import './VioletUiLoadingBar.css';
 
-const VioletUiLoadingBar = () => {
+const VioletUiLoadingBar = ({progress}) => {
     return(
-        <div className="ViolitUiLoadingBar--Container">
-            
+        <div className="VioletUiLoadingBar--Container">
+            <div className="VioletUiLoadingBar--Container--Box">
+                <span style={{height: '20px', width: `${progress}`, backgroundColor: "green"}}></span>
+            </div>
         </div>
     );
 }
