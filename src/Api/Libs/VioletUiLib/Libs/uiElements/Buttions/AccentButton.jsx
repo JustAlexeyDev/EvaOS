@@ -1,4 +1,4 @@
-import './Styles/AccentButton.css';
+import './Styles/Buttons.css';
 
 const AccentButton = ({title}) => {
     return(
