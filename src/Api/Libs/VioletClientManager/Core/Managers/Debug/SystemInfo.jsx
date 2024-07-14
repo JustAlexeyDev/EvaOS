@@ -14,9 +14,9 @@ const SystemInfo = () => {
                 setMemoryUsage(parseFloat(usedMemoryMB));
 
                 // Determine the color of the progress bar based on memory usage
-                if (usedMemoryMB < 10) {
+                if (usedMemoryMB < 40) {
                     setProgressBarColor('green');
-                } else if (usedMemoryMB < 50) {
+                } else if (usedMemoryMB < 60) {
                     setProgressBarColor('yellow');
                 } else {
                     setProgressBarColor('red');
