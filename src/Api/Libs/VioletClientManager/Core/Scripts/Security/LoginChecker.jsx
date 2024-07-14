@@ -3,11 +3,13 @@ import {useNavigate } from "react-router-dom";
 
 export default function LoginChecker() {
     const navigate = useNavigate();
+    const userLogged = localStorage.getItem("user");
     useEffect(() => {
-        if (localStorage.getItem("user")) {
-            navigate("/Login");
-        } else {
+        if (userLogged) {
+            console.log("Checked");
+        } if (!userLogged) {
             navigate("/");
+            console.error("NotAuth");
         }
     }, [navigate]);    
 }
