@@ -12,4 +12,5 @@
 }
 .VioletUiLoadingBar--Container--Box span {
     border-radius: 8px;
+    background-color: green;
 }
