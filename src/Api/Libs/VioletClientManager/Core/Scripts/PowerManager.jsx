@@ -1,10 +1,10 @@
-import AccentButton from "../../../VioletUiLib/Libs/uiElements/Buttions/AccentButton";
+import ViolitUiAccentButton from "../../../VioletUiLib/Libs/uiElements/Buttions/ViolitUiAccentButton";
 
 const PowerManager =() => {
     return(
         <div>
             <button>Блокировка</button>
-            <AccentButton title="Выключение"/>
+            <ViolitUiAccentButton title="Выключение"/>
         </div>
     );
 }
