@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import "./VioletUiTest.css";
 
-import VioletUiLoadingBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/VioletUiLoadingBar';
-
+import VioletUiLoadingBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar';
+import VioletUiCriticalBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/CriticalBar/VioletUiCriticalBar';
 const VioletUiTest = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [progressbar, setProgressbar] = useState(50)
 
   const handleClose = () => {
     setIsOpen(false);
@@ -15,9 +16,19 @@ const VioletUiTest = () => {
     setIsOpen(true);
   }
 
-  const RandomNumber = () => {
-    return Math.random(50, 100);
-  }
+
+
+    useEffect(() => {
+        const RandomNumber = () => {
+            setProgressbar(90);
+        }
+
+        const RandomNumberUpdater = setInterval(() => {
+            RandomNumber();
+        }, 1000);        
+        return () => clearInterval(RandomNumberUpdater);
+    }, []);
+
 
   return (
     <>
@@ -26,11 +37,12 @@ const VioletUiTest = () => {
           <img alt="Logo"/>
         </button>
       </div>
+
       {isOpen && (
         <WindowManager title="VioletUiTestApp" onClose={handleClose}>
           <div className="">
-
-            <VioletUiLoadingBar progress={RandomNumber}/>
+            {/* <VioletUiLoadingBar progress={progressbar}/> */}
+            <VioletUiCriticalBar progress={progressbar}/>
 
           </div>
         </WindowManager>
