@@ -6,6 +6,8 @@ import Bsod from "./Api/Libs/VioletClientManager/Core/Managers/Errors/Bsod";
 import Desktop from "./Screens/Desktop";
 import Setup from "./Api/Libs/VioletClientManager/Core/Start/Setup";
 
+import LoginChecker from "./Api/Libs/VioletClientManager/Core/Scripts/Security/LoginChecker";
+
 const Core = () => {
     return (
         <div>
@@ -15,6 +17,7 @@ const Core = () => {
                 <Route path="/*" element={<Bsod />} />
                 <Route path="/Desktop" element={<Desktop />} />
             </Routes>
+            <LoginChecker />
         </div>
     );
 }
