@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/WindowManager';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
 import './Style.css';
 

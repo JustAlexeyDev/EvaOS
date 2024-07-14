@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/WindowManager';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 
 const Notepad = () => {
   const [isOpen, setIsOpen] = useState(false);
