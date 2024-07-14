@@ -1,10 +1,10 @@
+import './VioletUiLoadingBar.css';
 
-
-const ViolitUiLoadingBar = () => {
+const VioletUiLoadingBar = () => {
     return(
-        <div>
-
+        <div className="ViolitUiLoadingBar--Container">
+            
         </div>
     );
 }
-export default ViolitUiLoadingBar;
+export default VioletUiLoadingBar;
