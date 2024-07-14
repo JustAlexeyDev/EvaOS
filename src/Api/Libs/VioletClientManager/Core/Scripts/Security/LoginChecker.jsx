@@ -6,6 +6,8 @@ export default function LoginChecker() {
     useEffect(() => {
         if (localStorage.getItem("user")) {
             navigate("/Login");
+        } else {
+            navigate("/");
         }
     }, [navigate]);    
 }
