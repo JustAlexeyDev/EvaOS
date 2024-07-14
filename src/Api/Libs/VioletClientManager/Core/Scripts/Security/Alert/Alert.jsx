@@ -1,7 +1,7 @@
 import './Style.css';
 import AlertConfirm from './Common/AlertConfirm';
 
-const Alert = ({title}) => {
+const Alert = ({title, onClick}) => {
     const ConfirmF = () => {
         window.location.href = '/Desktop';
     }
