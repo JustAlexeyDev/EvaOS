@@ -15,6 +15,10 @@ const VioletUiTest = () => {
     setIsOpen(true);
   }
 
+  const RandomNumber = () => {
+    return Math.random(50, 100);
+  }
+
   return (
     <>
         <div>
@@ -26,7 +30,7 @@ const VioletUiTest = () => {
         <WindowManager title="VioletUiTestApp" onClose={handleClose}>
           <div className="">
 
-            <VioletUiLoadingBar />
+            <VioletUiLoadingBar progress={RandomNumber}/>
 
           </div>
         </WindowManager>
