@@ -41,7 +41,7 @@ const WindowManager = ({ title, children, onClose }) => {
         <div className="window-content">
           <div className="window-header">
             <span>{title}</span>
-            <div className=" window-header-nav">
+            <div className="window-header-nav">
               <button className="fullscreen-button" onClick={toggleFullScreen}>
                 {isFullScreen ? '◀' : '▶'}
               </button>
