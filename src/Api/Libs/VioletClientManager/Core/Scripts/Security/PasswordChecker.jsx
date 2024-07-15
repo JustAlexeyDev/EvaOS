@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PasswordChecker = ({password, username}) => {
+const PasswordChecker = ({password, username, onSubmit}) => {
+    const userPassword = localStorage.getItem("password");
+    const userName = localStorage.getItem("user");
+    const navigate = useNavigate();
+
     const handleLogin = (e) => {
         e.preventDefault();
-        if(password.value === localStorage.getItem("password")) {
-            window.location.href = "/Desktop";
+        if(password.value === userPassword && userName == true) {
+            navigate("/Desktop");
             setError("");
         } else {
-            setError("Wrong password!");
+            setError("Неверный пароль!");
         }
     }
 
