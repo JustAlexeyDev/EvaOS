@@ -1,7 +1,10 @@
 import DesktopApps from "../Components/DesktopApps";
-import TaskManager from "../Components/TaskManager";
 import React, { useState } from 'react';
-import ContextMenu from "../Managers/Context/ContextMenu";
+import ContextMenu from "../Api/Libs/VioletClientManager/Core/Managers/Context/ContextMenu";
+
+
+import TaskManager from "../Api/Libs/VioletClientManager/Components/TaskManager";
+
 const Desktop = () => {
 
     return(

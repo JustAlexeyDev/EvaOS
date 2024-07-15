@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PowerManager from "../Core/Scripts/PowerManager";
 
 const AppsMenu = () => {
     const [userdata, setUserData] = useState("");
@@ -15,6 +16,12 @@ const AppsMenu = () => {
             <div className="AppsMenu--Container">
                 <div className="AppsMenu--User">
                     {userdata}                
+                </div>
+                <div>
+                    {/* Apps */}
+                </div>
+                <div>
+                    <PowerManager />
                 </div>
             </div>
         </div>

@@ -49,7 +49,6 @@ const WindowManager = ({ title, children, onClose }) => {
                 X
               </button>              
             </div>
-
           </div>
           <div className="window-body">{children}</div>
         </div>

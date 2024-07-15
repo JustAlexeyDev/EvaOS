@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate } from "react-router-dom";
 import './style.css';
-// import LoginChecker from "../Secure/LoginChecker";
+import Alert from "../Scripts/Security/Alert/Alert";
+import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 
 const Setup = (Page) => {
 
@@ -11,6 +12,8 @@ const Setup = (Page) => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [fogotQuestion, setFogotQuestion] = useState("");
+    const [AlertNoti, setAlertNoti] = useState(false);
+    const [loadingBar, setLoadingBar] = useState(0)
 
     const Start = () => {
             setLoading(true);
@@ -18,10 +21,13 @@ const Setup = (Page) => {
             localStorage.setItem("user", username);
             localStorage.setItem("password", password);
             localStorage.setItem("fogotQuestion", fogotQuestion);
+
+            // const load = () => {
+            //     let i = 0;
+            // }
             setTimeout(() => {
                 window.location.href = "/Login";
             }, 2000);
-
     }
     const Cancle = () => {
         setSetup(false);
@@ -45,7 +51,8 @@ const Setup = (Page) => {
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
-            navigate("/error");
+            // navigate("/Desktop");
+            setAlertNoti(true)
         }
     }, [navigate]);    
 
@@ -74,7 +81,7 @@ const Setup = (Page) => {
                     <div>
                         {loading && (
                             <div>
-                                Загрузка..
+                                <VioletUiLoadingBar progress={loadingBar}/>
                             </div>
                         )}
                     </div>
@@ -90,6 +97,9 @@ const Setup = (Page) => {
                     <button onClick={signin} className="Accent--Button">Установить систему</button>
                 </div>
             </div>
+            {AlertNoti && (
+                <Alert title="Ошибка прав доступа"/>
+            )}
         </div>
     );
 }

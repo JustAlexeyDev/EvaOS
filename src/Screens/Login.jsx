@@ -1,24 +1,28 @@
 
 import React, {useEffect, useState} from "react";
+import PasswordChecker from '../Api/Libs/VioletClientManager/Core/Scripts/Security/PasswordChecker';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [error, setError] = useState("");
     const [fogotForm, setFogotForm] = useState(false);
+    const navigate = useNavigate();
+    const userPassword = localStorage.getItem("password");
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if(password.value === localStorage.getItem("password")) {
-            window.location.href = "/Desktop";
+        if(password.value === userPassword) {
+            navigate("/Desktop");
             setError("");
         } else {
-            setError("Wrong password!");
+            setError("Неверный пароль!");
         }
     }
 
     const FogotF = (e) => {
         e.preventDefault();
         if(fogotInput.value == localStorage.getItem("fogotQuestion")) {
-            window.location.href = "/Desktop";
+            navigate("/Desktop");
             setError("");
         }
     }
@@ -29,10 +33,10 @@ const Login = () => {
                 <div>
                     <h1>Добро Пожаловать, {localStorage.getItem("user")}!</h1>
                 </div>
-                <form onSubmit={handleLogin}>
-                    <input type="password" id="password" placeholder="Введите пароль.."/>
-                    <button className="white" type="submit">Войти</button>
-                </form>
+                    <form onSubmit={handleLogin}>
+                        <input type="password" id="password" placeholder="Введите пароль.."/>
+                        <button className="white" type="submit">Войти</button>
+                    </form>
                 {error}
                 <button className="white" onClick={setFogotForm}>Забыли пароль?</button>
                 {
@@ -44,6 +48,7 @@ const Login = () => {
                     )
                 }
             </div>
+            <PasswordChecker />
         </div>
     );
 }
