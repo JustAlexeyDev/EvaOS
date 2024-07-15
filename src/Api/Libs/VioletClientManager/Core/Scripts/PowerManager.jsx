@@ -1,6 +1,7 @@
 import ViolitUiAccentButton from "../../../VioletUiLib/Libs/uiElements/Buttions/ViolitUiAccentButton";
 
 const PowerManager =() => {
+    
     return(
         <div>
             <button>Блокировка</button>
