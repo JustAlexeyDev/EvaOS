@@ -29,7 +29,7 @@ const Bsod = () => {
             <h1>A problem has been detected and EvaOS has been shut down to pravent damage to your computer</h1>
             <br />
             <br />
-            <p>Thr problem seems to be caused by the following file: DAMAGECODE.JSX</p>
+            <p>The problem seems to be caused by the following file: DAMAGECODE.JSX</p>
             <br />
             <br />
             <p>If this problen continue, witch seems likely, disable or remove any newly installed hardware or reboot internet connection</p>
