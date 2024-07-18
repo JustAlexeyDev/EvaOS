@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
-import 'src/Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager.css';
+import './WindowManager.css';
 
 const WindowManager = ({ title, children, onClose }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
