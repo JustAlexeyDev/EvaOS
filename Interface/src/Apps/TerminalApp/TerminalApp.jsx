@@ -47,7 +47,7 @@ const TerminalApp = () => {
       case 'version':
         return 'Version of terminal - 0.000.01';
       case 'help':
-        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст';
+        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала';
       case 'clear':
         handleClearHistory();
         return 'History cleared';
