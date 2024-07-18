@@ -60,7 +60,7 @@ const TerminalApp = () => {
   const handleCommand = (command) => {
     switch (command) {
       case 'help':
-        return 'Available commands: help, clear, logout';
+        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя';
       case 'clear':
         handleClearHistory();
         return 'History cleared';
