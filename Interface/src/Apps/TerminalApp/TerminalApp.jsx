@@ -1,21 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import './TerminalApp.css';
 import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
+import { osversion } from '../../config';
 
 const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState(data);
   const [inputValue, setInputValue] = useState('');
-  const [textColor, setTextColor] = useState('white');
+  const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const osversion = localStorage.getItem("osversion")
+  const updateIntervalRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
   }, [history]);
+
+  useEffect(() => {
+    return () => {
+      if (updateIntervalRef.current) {
+        clearInterval(updateIntervalRef.current);
+      }
+    };
+  }, []);
 
   const handleClose = () => setIsOpen(false);
   const openTerminal = () => setIsOpen(true);
@@ -28,6 +38,21 @@ const TerminalApp = () => {
       setHistory(newHistory);
       setInputValue('');
     }
+  };
+
+  const update = () => {
+    // setUpdateProgress(0);
+    // updateIntervalRef.current = setInterval(() => {
+    //   setUpdateProgress(prevProgress => {
+    //     if (prevProgress >= 100) {
+    //       clearInterval(updateIntervalRef.current);
+          localStorage.setItem("osversion", osversion);
+    //       return 100;
+    //     }
+    //     return prevProgress + 20;
+    //   });
+    // }, 100);
+    return 'Updating...';
   };
 
   const handleClearHistory = () => setHistory([]);
@@ -46,9 +71,9 @@ const TerminalApp = () => {
     const args = command.split(' ');
     switch (args[0]) {
       case 'version':
-        return 'Version of terminal - 0.000.01';
+        return 'Version of terminal - 0.000.02';
       case 'help':
-        return `EvaOS - ${osversion} Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала`;
+        return `Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала`;
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -60,6 +85,8 @@ const TerminalApp = () => {
         return 'Logging out..';
       case 'send':
         return `${args.slice(1).join(' ')}`;
+      case 'update':
+        return update();
       default:
         return `Command not found: ${command}`;
     }
@@ -80,7 +107,7 @@ const TerminalApp = () => {
       {isOpen && (
         <WindowManager title="Terminal" onClose={handleClose}>
           <div className="Terminal--Container">
-            <div className="Terminal--Messages" style={{ color: textColor }}>
+            <div className="Terminal--Messages">
               {history.map((message, index) => (
                 <div key={index} className="Terminal--Message">
                   <span className='Terminal--Message--User'>{`> ${message.command}`}</span>
@@ -88,6 +115,9 @@ const TerminalApp = () => {
                 </div>
               ))}
             </div>
+            {updateProgress > 0 && updateProgress < 100 && (
+              <VioletUiLoadingBar progress={updateProgress} />
+            )}
             <div className="Terminal--Inputzone">
               <input
                 type="text"
