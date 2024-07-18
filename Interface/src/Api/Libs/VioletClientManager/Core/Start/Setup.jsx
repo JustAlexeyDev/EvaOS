@@ -3,6 +3,7 @@ import {useNavigate } from "react-router-dom";
 import './style.css';
 import Alert from "../Scripts/Security/Alert/Alert";
 import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
+import { osversion } from "../../../../../config";
 
 const Setup = (Page) => {
 
@@ -14,6 +15,7 @@ const Setup = (Page) => {
     const [fogotQuestion, setFogotQuestion] = useState("");
     const [AlertNoti, setAlertNoti] = useState(false);
     const [loadingBar, setLoadingBar] = useState(0)
+    
 
     const Start = () => {
             setLoading(true);
@@ -21,6 +23,8 @@ const Setup = (Page) => {
             localStorage.setItem("user", username);
             localStorage.setItem("password", password);
             localStorage.setItem("fogotQuestion", fogotQuestion);
+
+            localStorage.setItem("osversion", osversion);
 
             // const load = () => {
             //     let i = 0;
