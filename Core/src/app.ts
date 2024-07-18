@@ -11,4 +11,9 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 app.use('/images', imageRoutes);
 
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+  });
+
 export default app;
