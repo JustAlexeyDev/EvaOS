@@ -11,6 +11,7 @@ const TerminalApp = () => {
   const [textColor, setTextColor] = useState('white');
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
+  const osversion = localStorage.getItem("osversion")
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -47,7 +48,7 @@ const TerminalApp = () => {
       case 'version':
         return 'Version of terminal - 0.000.01';
       case 'help':
-        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала';
+        return `EvaOS - ${osversion} Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала`;
       case 'clear':
         handleClearHistory();
         return 'History cleared';
