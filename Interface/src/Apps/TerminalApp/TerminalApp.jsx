@@ -18,7 +18,7 @@ const TerminalApp = () => {
     <>
         <div>
         <button onClick={Open} className="App--Icon">
-          <img alt="Logo"/>
+          <img src="https://imgs.search.brave.com/lBMtvfMKjqqRM0Ifbd9H7F0AowKI_qWpbWbrCyk7pjY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL1QvdGVybWlu/YWwtbG9nby1EMzkx/OEIxRTNBLXNlZWts/b2dvLmNvbS5wbmc" alt="Logo"/>
         </button>
       </div>
 
