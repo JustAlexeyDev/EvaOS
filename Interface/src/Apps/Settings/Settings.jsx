@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import WindowManager from 'src/Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
-import SystemInfo from 'src/Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
-import 'src/Apps/Settings/Style.css';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
+import './Style.css';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);

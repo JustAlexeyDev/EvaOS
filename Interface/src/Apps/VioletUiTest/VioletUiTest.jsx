@@ -1,10 +1,10 @@
-import "src/Apps/VioletUiTest/VioletUiTest.css";
+import "./VioletUiTest.css";
 
 import React, { useState, useEffect } from 'react';
 
-import WindowManager from 'src/Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
-import VioletUiLoadingBar from 'src/Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar';
-import VioletUiCriticalBar from 'src/Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/CriticalBar/VioletUiCriticalBar';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import VioletUiLoadingBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar';
+import VioletUiCriticalBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/CriticalBar/VioletUiCriticalBar';
 
 
 const VioletUiTest = () => {

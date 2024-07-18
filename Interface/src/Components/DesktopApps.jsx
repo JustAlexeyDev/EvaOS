@@ -1,10 +1,10 @@
-
-import Notepad from "src/Apps/Note/Notepad";
 import React, {useState, useEffect} from "react";
-import TodoApp from "src/Apps/TodoApp/ToDoApp";
-import Settings from "src/Apps/Settings/Settings";
-import VioletUiTest from "src/Apps/VioletUiTest/VioletUiTest";
-import TerminalApp from "src/Apps/TerminalApp/TerminalApp";
+
+import Notepad from "../Apps/Note/Notepad";
+import TodoApp from "../Apps/TodoApp/ToDoApp";
+import Settings from "../Apps/Settings/Settings";
+import VioletUiTest from "../Apps/VioletUiTest/VioletUiTest";
+import TerminalApp from "../Apps/TerminalApp/TerminalApp";
 
 const DesktopApps = () => {
 

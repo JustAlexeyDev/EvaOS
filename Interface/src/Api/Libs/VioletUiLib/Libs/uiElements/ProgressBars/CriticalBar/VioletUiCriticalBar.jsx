@@ -1,4 +1,4 @@
-import 'src/Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/CriticalBar/VioletUiCriticalBar.css';
+import './VioletUiCriticalBar.css';
 import React, {useState, useEffect} from "react";
 
 const VioletUiCriticalBar= ({progress}) => {

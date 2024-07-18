@@ -1,7 +1,7 @@
-import "src/Apps/TerminalApp/TerminalApp.css";
+import "./TerminalApp.css";
 import React, { useState, useEffect } from 'react';
-import WindowManager from 'src/Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
-import data from 'src/Apps/TerminalApp/history.json';
+import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import data from './history.json';
 
 const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,4 +1,4 @@
-import 'src/Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar.css';
+import './VioletUiLoadingBar.css';
 
 const VioletUiLoadingBar = ({progress}) => {
     
