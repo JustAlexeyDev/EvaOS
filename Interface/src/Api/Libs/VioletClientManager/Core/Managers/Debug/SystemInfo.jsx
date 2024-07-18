@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const SystemInfo = () => {
     const [memoryUsage, setMemoryUsage] = useState(0);
     const [networkUsage, setNetworkUsage] = useState(0);
     const [storageUsage, setStorageUsage] = useState(0);
     const [progressBarColor, setProgressBarColor] = useState('green');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const updateMemoryUsage = () => {
@@ -19,6 +21,7 @@ const SystemInfo = () => {
                     setProgressBarColor('yellow');
                 } else {
                     setProgressBarColor('red');
+                    navigate("/outOfMemory");
                 }
             } else {
                 setMemoryUsage(0);
