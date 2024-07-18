@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './TerminalApp.css';
 import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
@@ -8,6 +8,7 @@ const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState(data);
   const [inputValue, setInputValue] = useState('');
+  const [textColor, setTextColor] = useState('white');
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
 
@@ -15,17 +16,10 @@ const TerminalApp = () => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
   }, [history]);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const handleClose = () => setIsOpen(false);
+  const openTerminal = () => setIsOpen(true);
 
-  const Open = () => {
-    setIsOpen(true);
-  };
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  const handleInputChange = (e) => setInputValue(e.target.value);
 
   const handleSend = () => {
     if (inputValue.trim()) {
@@ -35,32 +29,23 @@ const TerminalApp = () => {
     }
   };
 
-  const handleClearHistory = () => {
-    setHistory([]);
-  };
+  const handleClearHistory = () => setHistory([]);
 
   const removeUser = () => {
     localStorage.removeItem('fogotQuestion');
     localStorage.removeItem('user');
     localStorage.removeItem('password');
     setIsOpen(false);
-
-        if (userLogged) {
-            console.log("Checked");
-        } if (!userLogged) {
-            navigate("/");
-            console.error("NotAuth");
-        }
+    if (!userLogged) navigate("/");
   };
 
-  const logout = () => {
-    navigate("/Login")
-  }
+  const logout = () => navigate("/Login");
 
   const handleCommand = (command) => {
-    switch (command) {
+    const args = command.split(' ');
+    switch (args[0]) {
       case 'help':
-        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя';
+        return 'Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст';
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -69,22 +54,22 @@ const TerminalApp = () => {
         return 'Removing user...';
       case 'logout':
         logout();
-        return 'loggin out..'
+        return 'Logging out..';
+      case 'send':
+        return `${args.slice(1).join(' ')}`;
       default:
         return `Command not found: ${command}`;
     }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSend();
-    }
+    if (e.key === 'Enter') handleSend();
   };
 
   return (
     <>
       <div>
-        <button onClick={Open} className="App--Icon">
+        <button onClick={openTerminal} className="App--Icon">
           <img src="https://imgs.search.brave.com/lBMtvfMKjqqRM0Ifbd9H7F0AowKI_qWpbWbrCyk7pjY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL1QvdGVybWlu/YWwtbG9nby1EMzkx/OEIxRTNBLXNlZWts/b2dvLmNvbS5wbmc" alt="Logo" />
         </button>
       </div>
@@ -92,24 +77,20 @@ const TerminalApp = () => {
       {isOpen && (
         <WindowManager title="Terminal" onClose={handleClose}>
           <div className="Terminal--Container">
-            <div className="Terminal--Messages">
-              {history.length > 0 && (
-                <div>
-                  {history.map((message, index) => (
-                    <div key={index} className="Terminal--Message">
-                      <span className='Terminal--Message--User'>{message.command}</span>
-                      <span>{handleCommand(message.command)}</span>
-                    </div>
-                  ))}
+            <div className="Terminal--Messages" style={{ color: textColor }}>
+              {history.map((message, index) => (
+                <div key={index} className="Terminal--Message">
+                  <span className='Terminal--Message--User'>{`> ${message.command}`}</span>
+                  <span>{handleCommand(message.command)}</span>
                 </div>
-              )}
+              ))}
             </div>
             <div className="Terminal--Inputzone">
               <input
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Нажмите Enter для ввода"
+                placeholder="Press Enter to send"
                 onKeyPress={handleKeyPress}
               />
             </div>
