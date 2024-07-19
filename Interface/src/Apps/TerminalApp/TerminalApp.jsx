@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
   const updateIntervalRef = useRef(null);
-  const version = "1.001.02";
+  const version = "1.001.04";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
