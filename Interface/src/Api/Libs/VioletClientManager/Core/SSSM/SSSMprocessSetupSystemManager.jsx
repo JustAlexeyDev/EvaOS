@@ -27,9 +27,9 @@ const SSSMprocessSetupSystemManager = (Page) => {
             localStorage.setItem("fogotQuestion", fogotQuestion);
             localStorage.setItem("osversion", osversion);
 
-            // setTimeout(() => {
-            //     window.location.href = "/Login";
-            // }, 2000);
+            setTimeout(() => {
+                window.location.href = "/Login";
+            }, 2000);
     }
 
     const signin = (e) => {
