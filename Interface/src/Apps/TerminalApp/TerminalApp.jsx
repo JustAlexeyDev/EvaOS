@@ -71,7 +71,7 @@ const TerminalApp = () => {
     const args = command.split(' ');
     switch (args[0]) {
       case 'version':
-        return 'Version of terminal - 0.000.02';
+        return 'Version of terminal - 1.000.02';
       case 'help':
         return `Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала`;
       case 'clear':
@@ -110,7 +110,8 @@ const TerminalApp = () => {
             <div className="Terminal--Messages">
               {history.map((message, index) => (
                 <div key={index} className="Terminal--Message">
-                  <span className='Terminal--Message--User'>{`> ${message.command}`}</span>
+                  <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
+                  <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
                   <span>{handleCommand(message.command)}</span>
                 </div>
               ))}

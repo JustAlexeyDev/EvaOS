@@ -32,7 +32,10 @@
     gap: 10px;
   }
   .Terminal--Message--User {
-    color: #31f010;
+    color: #860ddd;
+  }
+  .Terminal--Message--Callback {
+    color: #17de0c;
   }
   .Terminal--Inputzone {
     display: flex;
