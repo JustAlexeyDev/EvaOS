@@ -20,11 +20,7 @@ const TerminalApp = () => {
   }, [history]);
 
   useEffect(() => {
-    return () => {
-      if (updateIntervalRef.current) {
-        clearInterval(updateIntervalRef.current);
-      }
-    };
+    return () => clearInterval(updateIntervalRef.current);
   }, []);
 
   const handleClose = () => setIsOpen(false);
@@ -41,17 +37,7 @@ const TerminalApp = () => {
   };
 
   const update = () => {
-    // setUpdateProgress(0);
-    // updateIntervalRef.current = setInterval(() => {
-    //   setUpdateProgress(prevProgress => {
-    //     if (prevProgress >= 100) {
-    //       clearInterval(updateIntervalRef.current);
-          localStorage.setItem("osversion", osversion);
-    //       return 100;
-    //     }
-    //     return prevProgress + 20;
-    //   });
-    // }, 100);
+    localStorage.setItem("osversion", osversion);
     return 'Updating...';
   };
 
@@ -73,7 +59,7 @@ const TerminalApp = () => {
       case 'version':
         return 'Version of terminal - 1.000.02';
       case 'help':
-        return `Available commands: help - список доступных команд, clear - очистить консоль, logout - выйти из учетной записи, removeUser - удалить пользователя, send [args] - вывести текст, version - вывести текующую версию терминала`;
+        return args.length > 1 ? handleHelpCommand(args[1]) : 'Available commands: help, clear, logout, removeUser, send, version, update';
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -84,7 +70,7 @@ const TerminalApp = () => {
         logout();
         return 'Logging out..';
       case 'send':
-        return `${args.slice(1).join(' ')}`;
+        return args.slice(1).join(' ');
       case 'update':
         return update();
       default:
@@ -92,9 +78,19 @@ const TerminalApp = () => {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') handleSend();
+  const handleHelpCommand = (cmd) => {
+    switch (cmd) {
+      case 'send': return 'send [args] - вывести текст';
+      case 'clear': return 'clear - очистить консоль';
+      case 'logout': return 'logout - выйти из учетной записи';
+      case 'removeUser': return 'removeUser - удалить пользователя';
+      case 'version': return 'version - вывести текующую версию терминала';
+      case 'update': return 'update - обновить систему';
+      default: return `Help not found for command: ${cmd}`;
+    }
   };
+
+  const handleKeyPress = (e) => e.key === 'Enter' && handleSend();
 
   return (
     <>
