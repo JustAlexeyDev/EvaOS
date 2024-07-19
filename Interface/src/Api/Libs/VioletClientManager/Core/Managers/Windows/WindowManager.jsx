@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
 import './WindowManager.css';
+import { X, Maximize,  Minimize} from 'lucide-react';
 
 const WindowManager = ({ title, children, onClose }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -43,10 +44,10 @@ const WindowManager = ({ title, children, onClose }) => {
             <span>{title}</span>
             <div className="window-header-nav">
               <button className="fullscreen-button" onClick={toggleFullScreen}>
-                {isFullScreen ? '◀' : '▶'}
+                {isFullScreen ? <Minimize color="#ffffff" />: <Maximize color="#ffffff" />}
               </button>
               <button className="close-button" onClick={onClose}>
-                X
+                <X color="#ffffff" />
               </button>              
             </div>
           </div>

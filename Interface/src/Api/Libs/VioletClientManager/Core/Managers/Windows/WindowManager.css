@@ -46,3 +46,7 @@
   align-items: center;
   gap: 30px;
 }
+.window-header-nav button {
+  display: flex;
+  align-items: center;
+}
