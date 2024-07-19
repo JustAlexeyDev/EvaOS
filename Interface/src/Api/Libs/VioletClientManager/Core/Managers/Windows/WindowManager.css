@@ -12,7 +12,7 @@
 
 .window-header {
   background-color: #f0f0f048;
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(10px);
   padding: 8px;
   cursor: move;
   display: flex;
