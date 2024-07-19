@@ -4,7 +4,7 @@ import './TerminalApp.css';
 import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
-import { osversion } from '../../config';
+import { osversion, lastedosversion } from '../../config';
 import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
 
 const TerminalApp = () => {
@@ -35,7 +35,7 @@ const TerminalApp = () => {
 
   const update = () => {
     localStorage.setItem("osversion", osversion);
-    return 'Updating done!';
+    return `Updating to ${osversion} from ${lastedosversion} complited! `;
   };
 
   const handleClearHistory = () => setHistory([]);
