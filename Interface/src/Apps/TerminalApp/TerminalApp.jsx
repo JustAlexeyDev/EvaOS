@@ -14,7 +14,7 @@ const TerminalApp = () => {
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
   const updateIntervalRef = useRef(null);
-  const version = "1.001.01"
+  const version = "1.001.02"
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -49,7 +49,7 @@ const TerminalApp = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('password');
     setIsOpen(false);
-    if (!userLogged) navigate("/systemError");
+    if (!userLogged) navigate("/userDataNotFound");
   };
 
   const logout = () => navigate("/Login");
