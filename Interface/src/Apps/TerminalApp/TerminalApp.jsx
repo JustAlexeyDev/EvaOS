@@ -14,6 +14,7 @@ const TerminalApp = () => {
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
   const updateIntervalRef = useRef(null);
+  const version = "1.001.00"
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -57,7 +58,7 @@ const TerminalApp = () => {
     const args = command.split(' ');
     switch (args[0]) {
       case 'version':
-        return 'Version of terminal - 1.000.02';
+        return `Version of terminal - ${version}`;
       case 'help':
         return args.length > 1 ? handleHelpCommand(args[1]) : 'Available commands: help, clear, logout, removeUser, send, version, update';
       case 'clear':
