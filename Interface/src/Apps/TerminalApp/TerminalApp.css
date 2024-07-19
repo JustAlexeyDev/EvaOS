@@ -1,71 +1,55 @@
-/* TerminalApp.css */
-
 .Terminal--Container {
-    color: #fff;
-    border-radius: 10px;
-    margin: auto;
-    overflow: hidden;
-  }
-  
-  .Terminal--Header h3 {
-    margin: 0;
-    font-weight: bold;
-  }
-  
-  .Terminal--Header button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #fff;
-  }
-  
-  .Terminal--Messages {
-    padding: 10px;
-    flex-grow: 1;
-    overflow-y: auto;
-  }
-  
-  .Terminal--Message {
-    margin-bottom: 5px;
-    display: flex;
-    gap: 10px;
-  }
-  .Terminal--Message--User {
-    color: #860ddd;
-  }
-  .Terminal--Message--Callback {
-    color: #17de0c;
-  }
-  .Terminal--Inputzone {
-    display: flex;
-    /* margin-top: 10px; */
-    position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  border-radius: 10px;
+  margin: auto;
+  height: 100%;
+}
+
+.Terminal--Box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.Terminal--Messages {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto; /* Ensure scroll if content overflows */
+  height: 100%; /* Ensure it takes full height */
+}
+
+.Terminal--Message {
+  margin-bottom: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.Terminal--Message--User {
+  color: #ab36ff;
+}
+
+.Terminal--Message--Callback {
+  color: #17de0c;
+}
+
+.Terminal--Inputzone {
+  display: flex;
+  position: absolute;
   width: 100%;
-    bottom: 0;
-    padding: 10px;
-    border-top: 1px solid #646464;
-  }
-  
-  .Terminal--Inputzone input {
-    flex: 1;
-    padding: 5px;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #646464;
-    border-radius: 5px;
-  }
-  
-  .Terminal--Inputzone button {
-    padding: 5px 10px;
-    margin-left: 10px;
-    background-color: #555;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .Terminal--Inputzone button:hover {
-    background-color: #777;
-  }
+  bottom: 0;
+  padding: 10px;
+  border-top: 1px solid #646464;
+}
+
+.Terminal--Inputzone input {
+  flex: 1;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #646464;
+  border-radius: 5px;
+}
