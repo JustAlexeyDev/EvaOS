@@ -1,4 +1,4 @@
-import './Style.css';
+import './Alert.css';
 import AlertConfirm from './Common/AlertConfirm';
 
 const Alert = ({title, onClick}) => {
