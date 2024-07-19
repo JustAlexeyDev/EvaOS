@@ -3,7 +3,7 @@ import AlertConfirm from './Common/AlertConfirm';
 
 const Alert = ({title, onClick}) => {
     const ConfirmF = () => {
-        window.location.href = '/Desktop';
+        window.location.href = '/Login';
     }
     return(
         <div className="Alert--Container">
