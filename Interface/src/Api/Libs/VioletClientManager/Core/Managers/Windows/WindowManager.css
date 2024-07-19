@@ -1,44 +1,46 @@
 .window {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #646464;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #1d1d1d;
-    color: var(--light--text--color);
-    border-radius: 10px;
-    z-index: 9999;
-    position: absolute;
-  }
-  
-  .window-header {
-    background-color: #f0f0f048;
-    backdrop-filter: blur(0px);
-    padding: 8px;
-    cursor: move;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #646464;
-    color: #fff;
-    border-radius: 10px 10px 0px 0px;
-  }
-  
-  .window-header span {
-    font-weight: bold;
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #fff;
-  }
-  
-  .window-body {
-    padding: 0px;
-    flex-grow: 1;
-  }
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #646464;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #1d1d1d;
+  color: var(--light--text--color);
+  border-radius: 10px;
+  z-index: 9999;
+  position: absolute;
+}
+
+.window-header {
+  background-color: #f0f0f048;
+  backdrop-filter: blur(0px);
+  padding: 8px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #646464;
+  color: #fff;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.window-header span {
+  font-weight: bold;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+}
+
+.window-body {
+  padding: 0px;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
 .window-header-nav {
   display: flex;
   align-items: center;
