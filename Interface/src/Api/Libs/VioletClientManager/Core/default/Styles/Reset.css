@@ -11,7 +11,7 @@
 	box-sizing: border-box;
     transition: all;
      transition: 0.25s;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* Links */
@@ -73,11 +73,13 @@ button, input[type="submit"] {
 	background-color: transparent;
 	background: none;
 	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0);
 }
 
 input:focus, input:active,
 button:focus, button:active {
   outline: none;
+	background-color: rgba(0, 0, 0, 0);
 }
 
 button::-moz-focus-inner {
