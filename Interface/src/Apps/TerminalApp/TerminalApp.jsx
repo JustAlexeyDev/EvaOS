@@ -5,6 +5,7 @@ import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import { osversion } from '../../config';
+import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
 
 const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +61,7 @@ const TerminalApp = () => {
       case 'version':
         return `Version of terminal - ${version}`;
       case 'help':
-        return args.length > 1 ? handleHelpCommand(args[1]) : 'Available commands: help, clear, logout, removeUser, send, version, update';
+        return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [agrs...], clear, logout, removeUser, send [args...], version, update"  ;
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -104,26 +105,29 @@ const TerminalApp = () => {
       {isOpen && (
         <WindowManager title="Terminal" onClose={handleClose}>
           <div className="Terminal--Container">
-            <div className="Terminal--Messages">
-              {history.map((message, index) => (
-                <div key={index} className="Terminal--Message">
-                  <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
-                  <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
-                  <span>{handleCommand(message.command)}</span>
-                </div>
-              ))}
-            </div>
-            {updateProgress > 0 && updateProgress < 100 && (
-              <VioletUiLoadingBar progress={updateProgress} />
-            )}
-            <div className="Terminal--Inputzone">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Press Enter to send"
-                onKeyPress={handleKeyPress}
-              />
+            <div className='Terminal--Box'>
+              <div className="Terminal--Messages">
+                <AsciiArt />
+                {history.map((message, index) => (
+                  <div key={index} className="Terminal--Message">
+                    <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
+                    <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
+                    <span>{handleCommand(message.command)}</span>
+                  </div>
+                ))}
+              </div>      
+              {updateProgress > 0 && updateProgress < 100 && (
+                <VioletUiLoadingBar progress={updateProgress} />
+              )}
+              <div className="Terminal--Inputzone">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="Press Enter to send"
+                  onKeyPress={handleKeyPress}
+                />
+              </div>
             </div>
           </div>
         </WindowManager>
@@ -132,4 +136,4 @@ const TerminalApp = () => {
   );
 };
 
-export default TerminalApp;
+export default TerminalApp; 
