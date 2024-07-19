@@ -18,7 +18,7 @@ const Core = () => {
                 <Route path="/*" element={<Bsod />} />
                 <Route path="/Desktop" element={<Desktop />} />
             </Routes>
-            <LoginChecker />
+            {/* <LoginChecker /> */}
         </div>
     );
 }
