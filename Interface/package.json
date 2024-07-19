@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
     "@vercel/analytics": "^1.0.1",
     "date-fns": "^3.6.0",
     "lucide-react": "^0.395.0",
@@ -23,8 +21,7 @@
     "react-resizable": "^3.0.5",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "^5.0.1",
-    "typescript": "^5.5.3"
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
