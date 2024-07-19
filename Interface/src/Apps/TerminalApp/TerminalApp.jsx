@@ -14,16 +14,11 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const updateIntervalRef = useRef(null);
   const version = "1.001.04";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
   }, [history]);
-
-  useEffect(() => {
-    return () => clearInterval(updateIntervalRef.current);
-  }, []);
 
   const handleClose = () => setIsOpen(false);
   const openTerminal = () => setIsOpen(true);
@@ -40,7 +35,7 @@ const TerminalApp = () => {
 
   const update = () => {
     localStorage.setItem("osversion", osversion);
-    return 'Updating...';
+    return 'Updating done!';
   };
 
   const handleClearHistory = () => setHistory([]);
