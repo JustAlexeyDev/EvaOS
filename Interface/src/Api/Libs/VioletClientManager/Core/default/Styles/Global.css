@@ -3,6 +3,7 @@
     --light--text--color: #fff;
     --dark--text--color: #1d1d1d;
     --accent--color--hover: #9a53d9;
+    --app--background--color: #f0f0f048;
     --background--image: url(../../../../../../Env/Images/wallpaper.jpg);
 }
 body {
