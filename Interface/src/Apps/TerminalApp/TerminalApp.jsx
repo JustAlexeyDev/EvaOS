@@ -44,6 +44,7 @@ const TerminalApp = () => {
     localStorage.removeItem('fogotQuestion');
     localStorage.removeItem('user');
     localStorage.removeItem('password');
+    setHistory([]);
     setIsOpen(false);
     if (!userLogged) navigate("/userDataNotFound");
   };
