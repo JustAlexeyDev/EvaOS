@@ -82,6 +82,7 @@ form {
     backdrop-filter: blur(20px);
     padding: 16px;
     border-radius: 20px;
+    border: 1px solid #ffffff98;
 }
 .sddm--container form {
     display: flex;
@@ -89,12 +90,13 @@ form {
     color: white;
     width: 100%;
     align-items: center;
+    
 }
 .sddm--container input {
     background-color: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(90px);
     padding: 8px;
-    border-radius: 9999px;
+    border-radius: 8px;
     border: 1px solid #ffffff98;
     color: white;
     width: 100%;
