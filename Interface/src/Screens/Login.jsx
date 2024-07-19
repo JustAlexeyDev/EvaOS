@@ -35,7 +35,7 @@ const Login = () => {
                 </div>
                     <form onSubmit={handleLogin}>
                         <input type="password" id="password" placeholder="Введите пароль.."/>
-                        <button className="white" type="submit">Войти</button>
+                        {/* <button className="white" type="submit">Войти</button> */}
                     </form>
                 {error}
                 <button className="white" onClick={setFogotForm}>Забыли пароль?</button>
