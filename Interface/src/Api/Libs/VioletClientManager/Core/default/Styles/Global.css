@@ -11,6 +11,7 @@ body {
 * {
     transition: all;
     transition: 0.3s;
+    /* outline: 1px solid #ff0000; */
 }
 .Page {
     display: flex;
@@ -176,10 +177,4 @@ form {
     display: flex;
     align-items: center;
     padding: 16px;
-}
-
-.ascii-art {
-    font-family: monospace;
-    white-space: pre;
-    color: #333;
 }
