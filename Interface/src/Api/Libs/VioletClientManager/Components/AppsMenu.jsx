@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PowerManager from "../Core/Scripts/PowerManager";
+import logo from "./Menu.svg";
 
 const AppsMenu = () => {
     const [userdata, setUserData] = useState("");
