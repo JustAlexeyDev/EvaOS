@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.003.06";
+  const version = "1.004.07";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -78,12 +78,12 @@ const TerminalApp = () => {
 
   const handleHelpCommand = (cmd) => {
     switch (cmd) {
-      case 'send': return 'send [args..] - вывести текст';
-      case 'clear': return 'clear - очистить консоль';
-      case 'logout': return 'logout - выйти из учетной записи';
+      case 'send': return 'send [args..] - display text';
+      case 'clear': return 'clear - clear console';
+      case 'logout': return 'logout - logout from account';
       case 'remove': return 'remove [args..] - user';
-      case 'version': return 'version - вывести текующую версию терминала';
-      case 'update': return 'update - обновить систему';
+      case 'version': return 'version - display current version of terminal';
+      case 'update': return 'update - system update';
       default: return `Help not found for command: ${cmd}`;
     }
   };
