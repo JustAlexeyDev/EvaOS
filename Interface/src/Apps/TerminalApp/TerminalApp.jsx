@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.003.04";
+  const version = "1.003.05";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -52,8 +52,7 @@ const TerminalApp = () => {
         setIsOpen(false);
         if (!userLogged) navigate("/userDataNotFound");
         return "User data removed.";
-      default:
-        return "Syntax error";
+      default: return "Syntax error";
     }
   };
 
@@ -62,24 +61,18 @@ const TerminalApp = () => {
   const handleCommand = (command) => {
     const args = command.split(' ');
     switch (args[0]) {
-      case 'version':
-        return `Version of terminal - ${version}`;
-      case 'help':
-        return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update";
+      case 'version': return `Version of terminal - ${version}`;
+      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update";
       case 'clear':
         handleClearHistory();
         return 'History cleared';
-      case 'remove':
-        return remove(command);
+      case 'remove': return remove(command);
       case 'logout':
         logout();
         return 'Logging out..';
-      case 'send':
-        return args.slice(1).join(' ');
-      case 'update':
-        return update();
-      default:
-        return `Command not found: ${command}`;
+      case 'send': return args.slice(1).join(' ');
+      case 'update': return update();
+      default: return `Command not found: ${command}`;
     }
   };
 
