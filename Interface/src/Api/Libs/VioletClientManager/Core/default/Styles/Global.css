@@ -24,6 +24,16 @@ body {
     color: #fff;
 }
 
+input {
+    display: flex;
+    padding: 4px;
+    border: 1px solid #646464;
+    border-radius: 5px;
+    color: #fff;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .Accent--Button {
     padding: 8px;
     background-color: var(--accent--color);
