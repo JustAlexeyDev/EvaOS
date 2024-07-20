@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Notepad.css';
 import WindowManager from '../..//Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 
 const Notepad = () => {
@@ -26,12 +27,15 @@ const Notepad = () => {
       </div>
       {isOpen && (
         <WindowManager title="Блокнот" onClose={handleClose}>
-          <textarea
-            value={text}
-            onChange={handleTextChange}
-            className="notepad-textarea"
-            placeholder="Введите ваш текст здесь..."
-          />
+          <div className='Notepad--Container'>
+            <textarea
+              value={text}
+              onChange={handleTextChange}
+              className="notepad-textarea"
+              placeholder="Введите ваш текст здесь..."
+            />            
+          </div>
+
         </WindowManager>
       )}
     </div>
