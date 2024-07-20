@@ -7,7 +7,6 @@ const Bsod = () => {
     const [deviceInfo, setDeviceInfo] = useState({});
 
     useEffect(() => {
-        // Извлекаем ошибку из URL
         const pathParts = location.pathname.split('/');
         const errorFromUrl = pathParts[pathParts.length - 1];
         setError(errorFromUrl);
@@ -24,10 +23,10 @@ const Bsod = () => {
 
     return (
         <div className="Page Bsod">
-            <h1>A problem has been detected and EvaOS has been shut down to prevent damage to your computer</h1>
+            <h1>A problem has been detected and EvaOS has been shut down to prevent damage to your system</h1>
             <br />
             <br />
-            <p>The problem seems to be caused by the following file: DAMAGECODE.JSX</p>
+            <p>The problem seems to be caused by the following file: Core.jsx</p>
             <br />
             <br />
             <p>If this problem continues, which seems likely, disable or remove any newly installed hardware or reboot internet connection</p>

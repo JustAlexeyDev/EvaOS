@@ -34,14 +34,16 @@ const SSSMprocessSetupSystemManager = (Page) => {
 
     const signin = (e) => {
         e.preventDefault();
-        setUsername(usernameform.value);
-        setPassword(passwordform.value);
-        setFogotQuestion(fogotQuestionFrom.value);
-        
-        if(username && password) {
-            Start();
-        }  else {
-
+        if (localStorage.getItem("user")) {
+            navigate("/UnexpectedKernelSystemError");
+        } else {
+            setUsername(usernameform.value);
+            setPassword(passwordform.value);
+            setFogotQuestion(fogotQuestionFrom.value);
+            
+            if(username && password) {
+                Start();
+            }
         }
     }
 
