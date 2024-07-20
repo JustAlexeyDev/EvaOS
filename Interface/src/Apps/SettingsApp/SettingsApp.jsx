@@ -91,7 +91,7 @@ const Settings = () => {
           <div>
             <h1>О системе</h1>
             <p>EvaOS - ReactJS Operating System</p>
-            <p>Версия системы: {osversion}</p>
+            <p>Version: {osversion}</p>
           </div>
         );
       default:
