@@ -18,7 +18,7 @@ const TerminalApp = () => {
   const [networkHistory, setNetworkHistory] = useState([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.008.13-Stable";
+  const version = "2.008.14-Stable";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -28,7 +28,7 @@ const TerminalApp = () => {
     const intervalId = setInterval(() => {
       const usage = NetworkUsage();
       setNetworkUsage(usage);
-      setNetworkHistory(prev => [...prev, usage].slice(-10)); // Keep last 10 readings
+      setNetworkHistory(prev => [...prev, usage].slice(-10)); 
     }, 1000);
 
     return () => clearInterval(intervalId);
