@@ -5,7 +5,7 @@ import logo from './Terminal.svg';
 import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
-import { osversion, lastedosversion } from '../../config';
+import { osversion } from '../../config';
 import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
 
 const TerminalApp = () => {
@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.003.05";
+  const version = "1.003.06";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -36,7 +36,7 @@ const TerminalApp = () => {
 
   const update = () => {
     localStorage.setItem("osversion", osversion);
-    return `Updating to ${osversion} from ${lastedosversion} completed! `;
+    return `Update ${osversion} installed. `;
   };
 
   const handleClearHistory = () => setHistory([]);
