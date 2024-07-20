@@ -15,7 +15,7 @@ const WindowManager = ({ title, children, onClose }) => {
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    setPosition({ x: 0, y: 0 }); // Сброс позиции при переходе в полноэкранный режим
+    setPosition({ x: 0, y: 0 }); 
   };
 
   const windowBounds = {
