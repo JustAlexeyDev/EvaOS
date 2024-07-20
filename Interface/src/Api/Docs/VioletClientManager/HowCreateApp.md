@@ -6,7 +6,7 @@ Ensure that the version of the VioletClientManager library has the - Stable or R
 Example 
 
 ```md
-Version of VioletClientManager0.0.1-Stable
+Version of VioletClientManager = 1.000.00-Stable
 ```
 
 ## Step 2
