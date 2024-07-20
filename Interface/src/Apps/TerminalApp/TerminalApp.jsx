@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.006.10";
+  const version = "2.007.11-Stable";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -52,7 +52,7 @@ const TerminalApp = () => {
         setIsOpen(false);
         if (!userLogged) navigate("/userDataNotFound");
         return "User data removed.";
-      default: return { error: true, message: "Syntax error. There's too few arguments."};
+      default: return { error: true, message: "cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:"};
     }
   };
 
@@ -72,11 +72,11 @@ const TerminalApp = () => {
         return 'Logging out..';
       case 'send': 
         if (args.length === 1) {
-          return { error: true, message:`cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nInputObject[0]:`};
+          return { error: true, message:`cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nargs[1]:`};
         }
         return args.slice(1).join(' ');
       case 'update': return update();
-      default: return { error: true, message: `Command not found: ${command}` };
+      default: return { error: true, message: `The term "${command}" is not recognized as the name of a cmdlet, function, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1` };
     }
   };
 
