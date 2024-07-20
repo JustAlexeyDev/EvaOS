@@ -1,6 +1,6 @@
+import "./ToDoApp.css";
 import React, { useState } from 'react';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
-import "./style.css"
 
 const TodoApp = () => {
   const [isOpen, setIsOpen] = useState(false);
