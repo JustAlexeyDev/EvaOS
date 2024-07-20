@@ -18,6 +18,10 @@ function ContextMenu() {
     show({ event });
   };
 
+  const handleOpenTerminal = () => {
+    
+  }
+
   return (
     <div>
       <div
@@ -28,7 +32,7 @@ function ContextMenu() {
 
       <Menu id={MENU_ID}>
         <Item onClick={handleItemClick}>Вставить</Item>
-        <Item onClick={handleItemClick}>Открыть в терминале</Item>
+        <Item onClick={handleOpenTerminal}>Открыть в терминале</Item>
         <Item onClick={handleItemClick}>Свойства</Item>
         <Separator />
         <Submenu label="Создать..">
