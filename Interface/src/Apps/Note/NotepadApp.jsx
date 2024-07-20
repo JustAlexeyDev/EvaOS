@@ -23,6 +23,13 @@ const Notepad = () => {
     return lines.map((_, index) => <div key={index}>{index + 1}</div>);
   }
 
+  const handleScroll = (event) => {
+    const lineNumbers = document.querySelector('.LineNumbers');
+    if (lineNumbers) {
+      lineNumbers.scrollTop = event.target.scrollTop;
+    }
+  };
+
   return (
     <div>
       <div>
@@ -39,6 +46,7 @@ const Notepad = () => {
             <textarea
               value={text}
               onChange={handleTextChange}
+              onScroll={handleScroll}
               className="notepad-textarea"
               placeholder="Введите ваш текст здесь..."
             />

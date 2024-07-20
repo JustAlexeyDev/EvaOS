@@ -1,7 +1,8 @@
 .Notepad--Container {
   display: flex;
   flex-direction: row;
-  height: 100%; 
+  height: 100%;
+  overflow: hidden;
 }
 
 .LineNumbers {
@@ -14,6 +15,13 @@
   min-width: 30px;
   text-align: right;
   height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.LineNumbers::-webkit-scrollbar {
+  display: none; 
 }
 
 .Notepad--Container textarea {
@@ -25,5 +33,5 @@
   border: none;
   outline: none;
   overflow: auto;
-  height: 100%; 
+  height: 100%;
 }
