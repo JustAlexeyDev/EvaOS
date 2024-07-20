@@ -1,6 +1,7 @@
 .Settings--Container {
     display: flex;
     gap: 20px;
+    color: #fff;
 }
 .Settings--Container nav {
     display: flex;
@@ -9,14 +10,16 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 150px;
+    width: 200px;
     padding: 16px;
     border-right: 1px solid #ccc;
     color: #fff;
+    gap: 20px;
 }
 .Settings--Page--Option {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 16px;
+    color: #fff;
 }
