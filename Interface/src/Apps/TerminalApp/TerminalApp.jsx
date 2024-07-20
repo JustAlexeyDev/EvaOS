@@ -52,7 +52,7 @@ const TerminalApp = () => {
         setIsOpen(false);
         if (!userLogged) navigate("/userDataNotFound");
         return "User data removed.";
-      default: return "Syntax error";
+      default: return "Syntax error. There's too few arguments.";
     }
   };
 
