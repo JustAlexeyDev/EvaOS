@@ -2,11 +2,11 @@ import './SettingsApp.css';
 import React, { useState } from 'react';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
-import {osversion} from '../../config';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState(null);
+  const osversion = localStorage.getItem("osversion")
 
   const handleClose = () => {
     setIsOpen(false);
