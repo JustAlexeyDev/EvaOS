@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from "react-router-dom";
 import './TerminalApp.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { osversion } from '../../config';
 import logo from './Terminal.svg';
 import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
-import { osversion } from '../../config';
 import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
 
 const TerminalApp = () => {
@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.004.07";
+  const version = "1.004.09";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
