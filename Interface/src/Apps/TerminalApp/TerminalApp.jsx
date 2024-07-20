@@ -18,7 +18,7 @@ const TerminalApp = () => {
   const [networkHistory, setNetworkHistory] = useState([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.008.12-Stable";
+  const version = "2.008.13-Stable";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
