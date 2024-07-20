@@ -6,6 +6,7 @@ import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/S
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [activePage, setActivePage] = useState(null);
   const osversion = localStorage.getItem("osversion");
   const user = localStorage.getItem("user");
@@ -28,13 +29,16 @@ const Settings = () => {
     e.preventDefault();
     const newUsername = document.getElementById('newUsername').value;
     const newPassword = document.getElementById('newPassword').value;
-
+  
     if (user !== newUsername) {
       localStorage.setItem("user", newUsername);
     }
     if (password !== newPassword) {
       localStorage.setItem("password", newPassword);
     }
+  
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 3000); // Скрыть сообщение через 3 секунды
   };
 
   const renderPage = () => {
@@ -99,6 +103,7 @@ const Settings = () => {
             </nav>
             <div className='Settings--Container--RightMenu'>
               {renderPage()}
+              {showSuccessMessage && <div className={`Settings--SuccessMessage ${showSuccessMessage ? 'visible' : ''}`}>Saved successfully</div>}
             </div>
           </div>
         </WindowManager>
