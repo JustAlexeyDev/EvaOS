@@ -1,8 +1,18 @@
 .Settings--Container {
     display: flex;
-    gap: 20px;
     color: #fff;
     border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+.Settings--Container--RightMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d1d1d;
+    padding: 16px;
+    height: 100%;
+    width: 100%;
+    box-shadow: -1px 0px 10px 1px rgba(0,0,0,0.75);
 }
 .Settings--Container nav {
     display: flex;
@@ -11,12 +21,13 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 200px;
+    width: 250px;
     padding: 16px;
-    border-right: 1px solid #ccc;
     color: #fff;
     gap: 20px;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.360);
+    backdrop-filter: blur(20px);
 }
 .Settings--Container--Buttons {
     display: flex;

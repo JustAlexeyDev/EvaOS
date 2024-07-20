@@ -1,12 +1,15 @@
 import './SettingsApp.css';
 import React, { useState } from 'react';
+import { CircleUser, SunMoon, MonitorCheck, FileText } from "lucide-react";
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState(null);
-  const osversion = localStorage.getItem("osversion")
+  const osversion = localStorage.getItem("osversion");
+  const user = localStorage.getItem("user");
+  const password = localStorage.getItem("password");
 
   const handleClose = () => {
     setIsOpen(false);
@@ -21,12 +24,35 @@ const Settings = () => {
     setActivePage(page);
   };
 
+  const handleSaveChanges = (e) => {
+    e.preventDefault();
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    if (user !== newUsername) {
+      localStorage.setItem("user", newUsername);
+    }
+    if (password !== newPassword) {
+      localStorage.setItem("password", newPassword);
+    }
+  };
+
   const renderPage = () => {
     switch (activePage) {
       case 'Account':
         return (
           <div className="Settings--Page--Options">
-            <p>Аватар</p>
+            <form onSubmit={handleSaveChanges}>
+              <div>
+                <p>Изменить имя пользователя</p>
+                <input id='newUsername' type="text" defaultValue={user} />
+              </div>
+              <div>
+                <p>Изменить пароль</p>
+                <input id='newPassword' type="password" defaultValue={password} />
+              </div>
+              <button className='Accent--Button'>Save changes</button>
+            </form>
           </div>
         );
       case 'Personalization':
@@ -65,13 +91,13 @@ const Settings = () => {
       {isOpen && (
         <WindowManager title="Настройки" onClose={handleClose}>
           <div className="Settings--Container">
-            <nav>
-              <button className='Accent--Button' onClick={() => setPage('Account')}>Аккаунт</button>
-              <button className='Accent--Button' onClick={() => setPage('Personalization')}>Персонализация</button>
-              <button className='Accent--Button' onClick={() => setPage('SystemMonitor')}>Системный монитор</button>
-              <button className='Accent--Button' onClick={() => setPage('AboutSystem')}>О системе</button>
+            <nav className='Settings--Container--Buttons'>
+              <button onClick={() => setPage('Account')}><CircleUser /><p>Account</p></button>
+              <button onClick={() => setPage('Personalization')}><SunMoon />Appearance</button>
+              <button onClick={() => setPage('SystemMonitor')}><MonitorCheck />System monitor</button>
+              <button onClick={() => setPage('AboutSystem')}><FileText />About system</button>
             </nav>
-            <div>
+            <div className='Settings--Container--RightMenu'>
               {renderPage()}
             </div>
           </div>
