@@ -15,7 +15,7 @@ const Login = () => {
             navigate("/Desktop");
             setError("");
         } else {
-            setError("Неверный пароль!");
+            setError("Wrong Password!");
         }
     }
 
@@ -31,18 +31,18 @@ const Login = () => {
         <div className="Page SDDM">
             <div className="sddm--container">
                 <div>
-                    <h1>Добро Пожаловать, {localStorage.getItem("user")}!</h1>
+                    <h1>Welcome, {localStorage.getItem("user")}!</h1>
                 </div>
                     <form onSubmit={handleLogin}>
-                        <input type="password" id="password" placeholder="Введите пароль.."/>
+                        <input type="password" id="password" placeholder="Enter password.."/>
                         {/* <button className="white" type="submit">Войти</button> */}
                     </form>
                 {error}
-                <button className="white" onClick={setFogotForm}>Забыли пароль?</button>
+                <button className="white" onClick={setFogotForm}>Fogot password?</button>
                 {
                     fogotForm && (
                         <form>
-                            <input id="fogotInput" type="text" placeholder="Имя вашего питомца"/>
+                            <input id="fogotInput" type="text" placeholder="Fogot word.."/>
                             <button onClick={FogotF}>Enter</button>
                         </form>
                     )
