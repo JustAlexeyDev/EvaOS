@@ -1,34 +1,36 @@
-# Как создать приложение?
+# How to Create an Application?
 
-## Шаг 1
-Убедитесь что версия библиотеки VioletClientManager имеет флаг - Stable или Release.
+## Step 1
+Ensure that the version of the VioletClientManager library has the - Stable or Release flag.
 
-Пример 
+Example 
 
 ```md
 Version of VioletClientManager0.0.1-Stable
 ```
 
-## Шаг 2
-Создайте директорию с названием приложения в директории Apps в 
+## Step 2
+Create a directory with the name of your application in the Apps directory at 
 ```
 ./src/Apps
 ```
 
-## Шаг 3
-Создайте файл с названием приложения в директории Apps с расширением .jsx или .tsx. Для кастомизации приложения создате файл с одноименным названием с расширением .css.
+## Step 3
+Create a file with the name of your application in the Apps directory with the extension .jsx or .tsx. For customizing your application, create a file with the same name and a .css extension.
 
-Пример
+Example
 ```md
 /Apps
 - Calc.jsx
 - Calc.css
+- logo.svg
+- info.json
 ```
 
-## Шаг 4
-Подключие оконный менеджер WindowManager.jsx из ./Api/Libs/VioletClientManager/Core/Managers/Windows.
+## Step 4
+Connect the WindowManager.jsx from ./Api/Libs/VioletClientManager/Core/Managers/Windows.
 
-Пример вашего приложения:
+Example of your application:
 ```jsx
 import React, { useState } from 'react';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
@@ -47,20 +49,20 @@ const TodoApp = () => {
 
   return (
     <>
-    // ЗНАЧЕК НА РАБОЧЕМ СТОЛЕ
+    // DESKTOP ICON
         <div>
             <button onClick={Open} className="App--Icon">
-            <img src="ИКОНКА ПРИЛОЖЕНИЯ"/>
+            <img src="APPLICATION ICON"/>
             </button>
         </div>
 
-        // ОТКРЫТОЕ ПРИЛОЖЕНИЕ
+        // OPEN APPLICATION
 
       {isOpen && (
-        <WindowManager title="НАЗВАНИЕ ПРИЛОЖЕНИЯ" onClose={handleClose}>
+        <WindowManager title="APPLICATION NAME" onClose={handleClose}>
           <div className="">
 
-            ВАШЕ ПРИЛОЖЕНИЕ
+            YOUR APPLICATION
 
           </div>
         </WindowManager>
@@ -72,7 +74,7 @@ const TodoApp = () => {
 export default TodoApp;
 ```
 
-## Шаг 5
-Ваше приложение готово? Тогда его нужно подключить. Метод подключения пока работает ка костыль, поэтому приношу извинения за неудобства.
+## Step 5
+Is your application ready? Then it needs to be connected. The method of connection is currently working as a workaround, so I apologize for any inconvenience.
 
-Зайдите в конпоненты системы и отредактируйте файл DesktopApps.jsx добавив в список ваше приложение.
+Go to the system components and edit the DesktopApps.jsx file by adding your application to the list.
