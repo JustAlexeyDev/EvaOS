@@ -3,6 +3,7 @@
   flex-direction: row;
   height: 100%;
   overflow: hidden;
+  background-color: #1d1d1d;
 }
 
 .LineNumbers {

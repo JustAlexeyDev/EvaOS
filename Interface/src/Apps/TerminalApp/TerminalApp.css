@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   color: #fff;
-  border-radius: 10px;
   margin: auto;
   overflow: hidden;
   height: 100%; /* Убедитесь, что контейнер имеет высоту */
@@ -13,6 +12,7 @@
   flex-direction: column;
   height: 100%; /* Убедитесь, что контейнер имеет высоту */
   overflow: hidden;
+  background-color: #1d1d1d;
 }
 
 .Terminal--Messages {
