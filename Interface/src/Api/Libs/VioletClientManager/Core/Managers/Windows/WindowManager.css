@@ -3,7 +3,6 @@
   flex-direction: column;
   border: 1px solid #646464;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #1d1d1d;
   color: var(--light--text--color);
   border-radius: 10px;
   z-index: 9999;
@@ -17,7 +16,7 @@
 }
 
 .window-header {
-  background-color: #f0f0f048;
+  background-color: #1d1d1d;
   backdrop-filter: blur(10px);
   padding: 8px;
   cursor: move;
@@ -46,6 +45,7 @@
   flex-grow: 1;
   overflow: hidden;
   width: auto;
+  border-radius: 0px 0px 10px 10px;
 }
 .window-header-nav {
   display: flex;
