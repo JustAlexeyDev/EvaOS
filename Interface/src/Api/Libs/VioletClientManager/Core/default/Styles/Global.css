@@ -132,12 +132,19 @@ form {
     bottom: 0;
     display: flex;
     backdrop-filter: blur(20px);
+    background-color: #1d1d1d6f;
     padding: 16px;
     width: 100%;
-    height: 60px;
+    height: 40px;
     align-items: center;
     justify-content: space-between;
     color: #fff;
+}
+.TaskManager--App--Icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+    cursor: pointer;
 }
 .App--Icon {
     width: 40px;
@@ -164,19 +171,19 @@ form {
     display: flex;
     flex-direction: column;
     position: fixed;
-    left: 1;
-    bottom: 80px;
+    left: 0;
+    bottom: 40px;
     width: 400px;
     height: 600px;
-    border: 1px solid #ffffff98;
-    border-radius: 20px;
+    border-radius: 0px 10px 0px 0px;
+    background-color: #1d1d1d;
 }
 .AppsMenu--Container {
-    background-color: #00000041;
     backdrop-filter: blur(10px);
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    padding: 16px;
 }
 
 .DesktopApps {
