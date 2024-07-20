@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.002.04";
+  const version = "1.003.04";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -36,18 +36,25 @@ const TerminalApp = () => {
 
   const update = () => {
     localStorage.setItem("osversion", osversion);
-    return `Updating to ${osversion} from ${lastedosversion} complited! `;
+    return `Updating to ${osversion} from ${lastedosversion} completed! `;
   };
 
   const handleClearHistory = () => setHistory([]);
 
-  const removeUser = () => {
-    localStorage.removeItem('fogotQuestion');
-    localStorage.removeItem('user');
-    localStorage.removeItem('password');
-    setHistory([]);
-    setIsOpen(false);
-    if (!userLogged) navigate("/userDataNotFound");
+  const remove = (command) => {
+    const args = command.split(' ');
+    switch(args[1]) {
+      case 'user':
+        localStorage.removeItem('fogotQuestion');
+        localStorage.removeItem('user');
+        localStorage.removeItem('password');
+        setHistory([]);
+        setIsOpen(false);
+        if (!userLogged) navigate("/userDataNotFound");
+        return "User data removed.";
+      default:
+        return "Syntax error";
+    }
   };
 
   const logout = () => navigate("/Login");
@@ -58,13 +65,12 @@ const TerminalApp = () => {
       case 'version':
         return `Version of terminal - ${version}`;
       case 'help':
-        return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [agrs...], clear, logout, removeUser, send [args...], version, update"  ;
+        return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update";
       case 'clear':
         handleClearHistory();
         return 'History cleared';
-      case 'removeUser':
-        removeUser();
-        return 'Removing user...';
+      case 'remove':
+        return remove(command);
       case 'logout':
         logout();
         return 'Logging out..';
@@ -79,10 +85,10 @@ const TerminalApp = () => {
 
   const handleHelpCommand = (cmd) => {
     switch (cmd) {
-      case 'send': return 'send [args] - вывести текст';
+      case 'send': return 'send [args..] - вывести текст';
       case 'clear': return 'clear - очистить консоль';
       case 'logout': return 'logout - выйти из учетной записи';
-      case 'removeUser': return 'removeUser - удалить пользователя';
+      case 'remove': return 'remove [args..] - user';
       case 'version': return 'version - вывести текующую версию терминала';
       case 'update': return 'update - обновить систему';
       default: return `Help not found for command: ${cmd}`;
@@ -133,4 +139,4 @@ const TerminalApp = () => {
   );
 };
 
-export default TerminalApp; 
+export default TerminalApp;
