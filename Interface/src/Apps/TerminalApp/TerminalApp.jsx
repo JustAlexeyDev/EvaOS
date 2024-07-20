@@ -15,7 +15,7 @@ const TerminalApp = () => {
   const [updateProgress, setUpdateProgress] = useState(0);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "1.004.09";
+  const version = "2.006.10";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
@@ -52,7 +52,7 @@ const TerminalApp = () => {
         setIsOpen(false);
         if (!userLogged) navigate("/userDataNotFound");
         return "User data removed.";
-      default: return "Syntax error. There's too few arguments.";
+      default: return { error: true, message: "Syntax error. There's too few arguments."};
     }
   };
 
@@ -70,9 +70,13 @@ const TerminalApp = () => {
       case 'logout':
         logout();
         return 'Logging out..';
-      case 'send': return args.slice(1).join(' ');
+      case 'send': 
+        if (args.length === 1) {
+          return { error: true, message:`cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nInputObject[0]:`};
+        }
+        return args.slice(1).join(' ');
       case 'update': return update();
-      default: return `Command not found: ${command}`;
+      default: return { error: true, message: `Command not found: ${command}` };
     }
   };
 
@@ -84,7 +88,7 @@ const TerminalApp = () => {
       case 'remove': return 'remove [args..] - user';
       case 'version': return 'version - display current version of terminal';
       case 'update': return 'update - system update';
-      default: return `Help not found for command: ${cmd}`;
+      default: return { error: true, message: `Help not found for command: ${cmd}` };
     }
   };
 
@@ -104,13 +108,20 @@ const TerminalApp = () => {
             <div className='Terminal--Box'>
               <div className="Terminal--Messages">
                 <AsciiArt />
-                {history.map((message, index) => (
-                  <div key={index} className="Terminal--Message">
-                    <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
-                    <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
-                    <span>{handleCommand(message.command)}</span>
-                  </div>
-                ))}
+                {history.map((message, index) => {
+                  const result = handleCommand(message.command);
+                  return (
+                    <div key={index} className="Terminal--Message">
+                      <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
+                      <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
+                      {result.error ? (
+                        <span className="Terminal--Message--Error">{result.message}</span>
+                      ) : (
+                        <span>{result}</span>
+                      )}
+                    </div>
+                  );
+                })}
               </div>      
               {updateProgress > 0 && updateProgress < 100 && (
                 <VioletUiLoadingBar progress={updateProgress} />

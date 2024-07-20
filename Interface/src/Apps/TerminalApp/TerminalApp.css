@@ -40,6 +40,10 @@
   color: #17de0c;
 }
 
+.Terminal--Message--Error {
+  color: red;
+}
+
 .Terminal--Inputzone {
   display: flex;
   position: absolute;
