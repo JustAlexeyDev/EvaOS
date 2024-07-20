@@ -1,3 +1,3 @@
-const osversion = "0.003.02";
+const osversion = "0.003.03";
 
 export { osversion };
