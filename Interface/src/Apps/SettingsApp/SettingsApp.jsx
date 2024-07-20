@@ -47,7 +47,6 @@ const Settings = () => {
 
     document.getElementById('currentPassword').value = '';
 
-
     setShowSuccessMessage(true);
     setTimeout(() => setShowSuccessMessage(false), 3000); 
   };
@@ -59,15 +58,15 @@ const Settings = () => {
           <div className="Settings--Page--Options">
             <form onSubmit={handleSaveChanges}>
               <div>
-                <p>Изменить имя пользователя</p>
+                <p>Edit username</p>
                 <input id='newUsername' type="text" defaultValue={user} />
               </div>
               <div>
-                <p>Текущий пароль</p>
+                <p>Current password</p>
                 <input id='currentPassword' type="password" />
               </div>
               <div>
-                <p>Изменить пароль</p>
+                <p>Edit password</p>
                 <input id='newPassword' type="password" defaultValue={password} />
               </div>
               <button className='Accent--Button'>Save changes</button>
@@ -77,7 +76,7 @@ const Settings = () => {
       case 'Personalization':
         return (
           <div>
-            <p>Обои</p>
+            <p>Wallpapers</p>
           </div>
         );
       case 'SystemMonitor':
@@ -89,8 +88,10 @@ const Settings = () => {
       case 'AboutSystem':
         return (
           <div>
-            <h1>О системе</h1>
+            <h2>About system</h2>
+            <br />
             <p>EvaOS - ReactJS Operating System</p>
+            <br />
             <p>Version: {osversion}</p>
           </div>
         );
