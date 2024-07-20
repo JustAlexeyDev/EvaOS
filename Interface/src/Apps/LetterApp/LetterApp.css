@@ -16,6 +16,9 @@
   gap: 20px;
   color: #fff;
   overflow-x: auto;
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
 }
 .Letter--Header input {
   display: flex;
