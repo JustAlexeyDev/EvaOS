@@ -1,11 +1,10 @@
+import './Settings.css';
 import React, { useState } from 'react';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
-import './Style.css';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [text, setText] = useState('');
   const [ Account, setAccount] = useState(false);
   const [Personalization, setPersonalization] = useState(false);
   const [SystemMonitor, setSystemMonitor] = useState(false);
@@ -14,9 +13,6 @@ const Settings = () => {
     setIsOpen(false);
   };
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
-  };
 
   const Open =() => {
     setIsOpen(true);
