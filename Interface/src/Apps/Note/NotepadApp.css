@@ -1,0 +1,15 @@
+.Notepad--Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Notepad--Container textarea {
+  flex: 1;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px;
+  resize: none;
+  border: none; 
+  outline: none; 
+  overflow: auto;
+}
