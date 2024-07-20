@@ -16,6 +16,20 @@
     border-right: 1px solid #ccc;
     color: #fff;
     gap: 20px;
+    align-items: center;
+}
+.Settings--Container--Buttons {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.Settings--Container--Buttons button{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    color: #fff;
+    width: 100%;
 }
 .Settings--Page--Option {
     display: flex;
