@@ -56,10 +56,16 @@ const SystemInfo = () => {
 
     return (
         <div>
-            <h1>System Information</h1>
-            <div>Used JS Heap Size: {memoryUsage} MB</div>
+            <h2>System monitor</h2>
+            <br />
             <div>Network Usage: {networkUsage} KB</div>
+            <br />
             <div>Storage Usage: {storageUsage} KB</div>
+            <div style={{ marginTop: '10px', height: '20px', backgroundColor: '#ddd', borderRadius: '5px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${storageUsage}%`, backgroundColor: progressBarColor }}></div>
+            </div>
+            <br />
+            <div>Used JS Heap Size: {memoryUsage} MB</div>
             <div style={{ marginTop: '10px', height: '20px', backgroundColor: '#ddd', borderRadius: '5px', overflow: 'hidden' }}>
                 <div style={{ height: '100%', width: `${memoryUsage}%`, backgroundColor: progressBarColor }}></div>
             </div>
