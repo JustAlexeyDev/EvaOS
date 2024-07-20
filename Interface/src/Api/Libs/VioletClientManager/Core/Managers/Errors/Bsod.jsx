@@ -25,11 +25,14 @@ const Bsod = () => {
         <div className="Page Bsod">
             <h1>A problem has been detected and EvaOS has been shut down to prevent damage to your system</h1>
             <br />
-            <br />
+            <br />  
             <p>The problem seems to be caused by the following file: Core.jsx</p>
             <br />
             <br />
             <p>If this problem continues, which seems likely, disable or remove any newly installed hardware or reboot internet connection</p>
+            <br />
+            <br />
+            <p>This error may have occurred due to a sitadnart behavior of the system or an unexpected error in VioletClientManager.</p>
             <br />
             <br />
             <p>TECHNICAL INFORMATION:</p>
