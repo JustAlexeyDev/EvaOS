@@ -14,8 +14,13 @@ const Notepad = () => {
     setText(event.target.value);
   };
 
-  const Open =() => {
+  const Open = () => {
     setIsOpen(true);
+  }
+
+  const getLineNumbers = () => {
+    const lines = text.split('\n');
+    return lines.map((_, index) => <div key={index}>{index + 1}</div>);
   }
 
   return (
@@ -28,14 +33,16 @@ const Notepad = () => {
       {isOpen && (
         <WindowManager title="Блокнот" onClose={handleClose}>
           <div className='Notepad--Container'>
+            <div className="LineNumbers">
+              {getLineNumbers()}
+            </div>
             <textarea
               value={text}
               onChange={handleTextChange}
               className="notepad-textarea"
               placeholder="Введите ваш текст здесь..."
-            />            
+            />
           </div>
-
         </WindowManager>
       )}
     </div>
