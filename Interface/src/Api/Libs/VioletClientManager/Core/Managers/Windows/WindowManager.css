@@ -39,8 +39,8 @@
   padding: 0px;
   flex-grow: 1;
   overflow: hidden;
+  width: auto;
 }
-
 .window-header-nav {
   display: flex;
   align-items: center;
