@@ -31,8 +31,8 @@ const WindowManager = ({ title, children, onClose }) => {
       defaultPosition={{ x: 0, y: 0 }}
       position={isFullScreen ? { x: 0, y: 0 } : position}
       onDrag={handleDrag}
-      bounds={windowBounds}
-      disabled={isFullScreen} // Отключение перетаскивания в полноэкранном режиме
+      // bounds={windowBounds}
+      disabled={isFullScreen} 
     >
       <ResizableBox
         width={isFullScreen ? window.innerWidth : 600}
