@@ -1,7 +1,5 @@
 import "./VioletUiTest.css";
-
 import React, { useState, useEffect } from 'react';
-
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar';
 import VioletUiCriticalBar from '../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/CriticalBar/VioletUiCriticalBar';
