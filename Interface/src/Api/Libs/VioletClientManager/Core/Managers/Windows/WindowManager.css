@@ -50,3 +50,11 @@
   display: flex;
   align-items: center;
 }
+.window.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9999;
+}

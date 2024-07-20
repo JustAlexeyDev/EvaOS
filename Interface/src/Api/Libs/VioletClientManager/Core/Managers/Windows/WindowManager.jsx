@@ -15,6 +15,7 @@ const WindowManager = ({ title, children, onClose }) => {
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
+    setPosition({ x: 0, y: 0 }); // Сброс позиции при переходе в полноэкранный режим
   };
 
   const windowBounds = {
@@ -28,16 +29,17 @@ const WindowManager = ({ title, children, onClose }) => {
     <Draggable
       handle=".window-header"
       defaultPosition={{ x: 0, y: 0 }}
-      position={position}
+      position={isFullScreen ? { x: 0, y: 0 } : position}
       onDrag={handleDrag}
       bounds={windowBounds}
+      disabled={isFullScreen} // Отключение перетаскивания в полноэкранном режиме
     >
       <ResizableBox
         width={isFullScreen ? window.innerWidth : 600}
         height={isFullScreen ? window.innerHeight : 400}
         minConstraints={[200, 100]}
         maxConstraints={[window.innerWidth, window.innerHeight]}
-        className="window"
+        className={`window ${isFullScreen ? 'fullscreen' : ''}`}
       >
         <div className="window-content">
           <div className="window-header">
