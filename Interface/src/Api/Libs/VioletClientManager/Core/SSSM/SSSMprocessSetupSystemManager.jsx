@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './SSSMprocessSetupSystemManager.css';
 import Alert from "../Scripts/Security/Alert/Alert";
 import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
@@ -16,7 +16,7 @@ const SSSMprocessSetupSystemManager = (Page) => {
     const [AlertNoti, setAlertNoti] = useState(false);
     const [loadingBar, setLoadingBar] = useState(0);
 
-    const versionOfSSSM = "1.002.00";
+    const versionOfSSSM = "1.003.00";
     
 
     const Start = () => {
@@ -58,28 +58,28 @@ const SSSMprocessSetupSystemManager = (Page) => {
                 <p>{versionOfSSSM}</p>
                 <div className="Setup--Container--Box">
                     <div>
-                        <h1>Добро пожаловать в EvaOS!</h1>
-                        <p>Эта система написана на ReactJS и поддерживается по лицензии MIT</p>
-                        <p>Введите ваше имя и пароль от новой учетной записи.</p>                        
+                        <h1>Welcome to EvaOS!</h1>
+                        <p>This system is written in ReactJS and is supported under the MIT license</p>
+                        <p>Enter your name and password for the new account.</p>                        
                     </div>
 
                     {!setup && (
                         <form>
                             <div>
-                                <p>Введите имя пользователя:</p>
+                                <p>Enter username:</p>
                                 <input id="usernameform" type="text" placeholder="Username" required/>                                
                             </div>
                             <div>
-                                <p>Придумайте пароль:</p>
+                                <p>Create a password:</p>
                                 <input id="passwordform" type="password" placeholder="Password" required/>                                
                             </div>
                             <div>
-                                <p>Придумайте слово востановления:</p>
-                                <input id="fogotQuestionFrom" placeholder="Например какое имя у вашего первого питомца?" type="text" required/>                                
+                                <p>Create a recovery word:</p>
+                                <input id="fogotQuestionFrom" placeholder="For example, what is the name of your first pet?" type="text" required/>                                
                             </div>
 
 
-                            <button onClick={signin} className="Accent--Button">Установить систему (2 клика)</button>
+                            <button onClick={signin} className="Accent--Button">Setup system (2 clicks)</button>
                         </form>
                     )}
                     <div>
@@ -92,7 +92,7 @@ const SSSMprocessSetupSystemManager = (Page) => {
                 </div>
             </div>
             {AlertNoti && (
-                <Alert title="Ошибка прав доступа"/>
+                <Alert title="Access Error"/>
             )}
         </div>
     );
