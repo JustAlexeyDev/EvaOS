@@ -7,19 +7,32 @@ import data from './history.json';
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
+import { NetworkUsage } from '../../Api/Libs/VioletClientManager/Core/Scripts/NetworkUsage';
 
 const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState(data);
   const [inputValue, setInputValue] = useState('');
   const [updateProgress, setUpdateProgress] = useState(0);
+  const [networkUsage, setNetworkUsage] = useState(0);
+  const [networkHistory, setNetworkHistory] = useState([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.007.12-Stable";
+  const version = "2.008.12-Stable";
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
   }, [history]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const usage = NetworkUsage();
+      setNetworkUsage(usage);
+      setNetworkHistory(prev => [...prev, usage].slice(-10)); // Keep last 10 readings
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleClose = () => setIsOpen(false);
   const openTerminal = () => setIsOpen(true);
@@ -62,7 +75,7 @@ const TerminalApp = () => {
     const args = command.split(' ');
     switch (args[0]) {
       case 'version': return `Version of terminal - ${version}`;
-      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update";
+      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update, netstat";
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -76,6 +89,8 @@ const TerminalApp = () => {
         }
         return args.slice(1).join(' ');
       case 'update': return update();
+      case 'netstat': 
+        return `Internet consumption: ${networkUsage} KB\nHistory: ${networkHistory.join(', ')}`;
       default: return { error: true, message: `The term "${command}" is not recognized as the name of a cmdlet, function, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1` };
     }
   };
@@ -88,6 +103,7 @@ const TerminalApp = () => {
       case 'remove': return 'remove [args..] - user';
       case 'version': return 'version - display current version of terminal';
       case 'update': return 'update - system update';
+      case 'netstat': return 'netstat - display internet consumption';
       default: return { error: true, message: `Help not found for command: ${cmd}` };
     }
   };
