@@ -29,7 +29,7 @@ const TaskManager =  () => {
             {openAppsMenu &&
                 <AppsMenu />
             }
-            <button className="App--Icon" onClick={handleOpenAppsMenu}>
+            <button className="TaskManager--App--Icon" onClick={handleOpenAppsMenu}>
                 <img src={logo} />
             </button>
 
