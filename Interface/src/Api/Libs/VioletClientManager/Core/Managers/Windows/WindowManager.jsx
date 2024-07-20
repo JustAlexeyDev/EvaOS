@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
 import './WindowManager.css';
-import { X, Maximize,  Minimize} from 'lucide-react';
+import { X, Maximize, Minimize } from 'lucide-react';
 
 const WindowManager = ({ title, children, onClose }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -20,8 +20,8 @@ const WindowManager = ({ title, children, onClose }) => {
   const windowBounds = {
     left: 0,
     top: 0,
-    right: window.innerWidth - (isFullScreen ? window.innerWidth * 0.9 : 600),
-    bottom: window.innerHeight - (isFullScreen ? window.innerHeight * 0.9 : 400),
+    right: window.innerWidth - (isFullScreen ? window.innerWidth : 600),
+    bottom: window.innerHeight - (isFullScreen ? window.innerHeight : 400),
   };
 
   return (
@@ -33,10 +33,10 @@ const WindowManager = ({ title, children, onClose }) => {
       bounds={windowBounds}
     >
       <ResizableBox
-        width={isFullScreen ? window.innerWidth * 0.9 : 600}
-        height={isFullScreen ? window.innerHeight * 0.9 : 400}
+        width={isFullScreen ? window.innerWidth : 600}
+        height={isFullScreen ? window.innerHeight : 400}
         minConstraints={[200, 100]}
-        maxConstraints={[window.innerWidth * 0.9, window.innerHeight * 0.9]}
+        maxConstraints={[window.innerWidth, window.innerHeight]}
         className="window"
       >
         <div className="window-content">
@@ -44,11 +44,11 @@ const WindowManager = ({ title, children, onClose }) => {
             <span>{title}</span>
             <div className="window-header-nav">
               <button className="fullscreen-button" onClick={toggleFullScreen}>
-                {isFullScreen ? <Minimize color="#ffffff" />: <Maximize color="#ffffff" />}
+                {isFullScreen ? <Minimize color="#ffffff" /> : <Maximize color="#ffffff" />}
               </button>
               <button className="close-button" onClick={onClose}>
                 <X color="#ffffff" />
-              </button>              
+              </button>
             </div>
           </div>
           <div className="window-body">{children}</div>
