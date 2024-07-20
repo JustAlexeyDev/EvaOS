@@ -3,7 +3,7 @@
 const AlertConfirm = ({onClick}) => {
     return(
         <div className="AlertConfirm">
-            <button onClick={onClick}>Подтвердить</button>
+            <button onClick={onClick}>Confirm</button>
         </div>
     );
 }
