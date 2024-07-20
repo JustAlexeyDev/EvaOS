@@ -25,11 +25,10 @@ const Notepad = () => {
 
   const handleScroll = (event) => {
     const lineNumbers = document.querySelector('.LineNumbers');
-    if (lineNumbers) {
+    if (lineNumbers && event.target.scrollTop !== lineNumbers.scrollTop) {
       lineNumbers.scrollTop = event.target.scrollTop;
     }
   };
-
   return (
     <div>
       <div>

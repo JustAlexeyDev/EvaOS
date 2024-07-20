@@ -18,6 +18,7 @@
   overflow-y: scroll;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
+  font-size: 14px;
 }
 
 .LineNumbers::-webkit-scrollbar {
