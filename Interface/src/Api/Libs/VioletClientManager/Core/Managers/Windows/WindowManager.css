@@ -10,6 +10,12 @@
   position: absolute;
 }
 
+.window-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .window-header {
   background-color: #f0f0f048;
   backdrop-filter: blur(10px);
