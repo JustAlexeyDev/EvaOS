@@ -59,7 +59,18 @@
     z-index: 99;
     backdrop-filter: blur(20px);
   }
-  
+  .Settings--ErrorMessage {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    background-color: red;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 99;
+    backdrop-filter: blur(20px);
+  }
+  .Settings--ErrorMessage.visible {
+    opacity: 1;
+  }
   .Settings--SuccessMessage.visible {
     opacity: 1;
   }
