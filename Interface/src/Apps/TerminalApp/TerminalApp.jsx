@@ -1,5 +1,5 @@
 import './TerminalApp.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { osversion } from '../../config';
 import logo from './Terminal.svg';
@@ -18,10 +18,12 @@ const TerminalApp = () => {
   const [networkHistory, setNetworkHistory] = useState([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.008.14-Stable";
+  const version = "2.009.15-Stable";
+  const messagesEndRef = useRef(null); 
 
   useEffect(() => {
     localStorage.setItem('terminalHistory', JSON.stringify(history));
+    scrollToBottom(); 
   }, [history]);
 
   useEffect(() => {
@@ -110,6 +112,10 @@ const TerminalApp = () => {
 
   const handleKeyPress = (e) => e.key === 'Enter' && handleSend();
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <div>
@@ -122,7 +128,7 @@ const TerminalApp = () => {
         <WindowManager title="Terminal" onClose={handleClose}>
           <div className="Terminal--Container">
             <div className='Terminal--Box'>
-              <div className="Terminal--Messages">
+              <div className="Terminal--Messages" ref={messagesEndRef}>
                 <AsciiArt />
                 {history.map((message, index) => {
                   const result = handleCommand(message.command);
@@ -138,6 +144,7 @@ const TerminalApp = () => {
                     </div>
                   );
                 })}
+                <div ref={messagesEndRef} />
               </div>      
               {updateProgress > 0 && updateProgress < 100 && (
                 <VioletUiLoadingBar progress={updateProgress} />

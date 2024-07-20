@@ -20,9 +20,10 @@
   flex-direction: column;
   padding: 10px;
   flex-grow: 1;
-  overflow-y: auto; /* Добавляет вертикальный скроллбар при переполнении */
-  height: 100%; /* Убедитесь, что контейнер имеет высоту */
-}
+  overflow-y: auto; 
+  height: 100%; 
+  margin-bottom: 60px;
+} 
 
 .Terminal--Message {
   margin-bottom: 5px;
@@ -49,6 +50,8 @@
   bottom: 0;
   padding: 10px;
   border-top: 1px solid #646464;
+  background-color: #1d1d1d;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .Terminal--Inputzone input {
