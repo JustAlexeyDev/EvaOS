@@ -9,6 +9,7 @@ const LetterApp = () => {
   const [text, setText] = useState('');
   const [formattedText, setFormattedText] = useState('');
   const textareaRef = useRef(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -85,6 +86,27 @@ const LetterApp = () => {
     setFormattedText(doc.body.innerHTML);
   }, [text]);
 
+  const handleSaveClick = () => {
+    const blob = new Blob([formattedText], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'document.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setText(e.target.result);
+      };
+      reader.readAsText(file);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -95,6 +117,8 @@ const LetterApp = () => {
       {isOpen && (
         <WindowManager title={info.name} description={info.version} onClose={handleClose}>
           <div className='Letter--Header'>
+            <button onClick={handleSaveClick}>Save</button>
+            <button onClick={() => document.getElementById('fileInput').click()}>Import</button>
             <button onClick={handleBoldClick}>Bold</button>
             <button onClick={handleItalicClick}>Italic</button>
             <button onClick={handleHeadingClick}>Heading</button>
@@ -103,6 +127,7 @@ const LetterApp = () => {
             <button onClick={handleAlignLeftClick}>Align Left</button>
             <button onClick={handleAlignCenterClick}>Align Center</button>
             <button onClick={handleAlignRightClick}>Align Right</button>
+            <input type="file" accept=".html" onChange={handleFileChange} style={{ display: 'none' }} id="fileInput" />
           </div>
 
           <div className='Letter--Container'>
