@@ -1,6 +1,6 @@
 import './SettingsApp.css';
 import React, { useState } from 'react';
-import { CircleUser, SunMoon, MonitorCheck, FileText, EyeOff, Eye } from "lucide-react";
+import { CircleUser, Palette, MonitorCheck, FileText, EyeOff, Eye } from "lucide-react";
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientKernel/Core/Managers/Debug/SystemInfo';
 
@@ -81,7 +81,6 @@ const Settings = () => {
                   </div>                  
                 </div>
 
-
               </div>
               <div>
                 <p>Edit password</p>
@@ -140,7 +139,7 @@ const Settings = () => {
           <div className="Settings--Container">
             <nav className='Settings--Container--Buttons'>
               <button onClick={() => setPage('Account')}><CircleUser /><p>Account</p></button>
-              <button onClick={() => setPage('Personalization')}><SunMoon />Appearance</button>
+              <button onClick={() => setPage('Personalization')}><Palette />Appearance</button>
               <button onClick={() => setPage('SystemMonitor')}><MonitorCheck />System monitor</button>
               <button onClick={() => setPage('AboutSystem')}><FileText />About system</button>
             </nav>
