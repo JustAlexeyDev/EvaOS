@@ -4,18 +4,25 @@ import { ResizableBox } from 'react-resizable';
 import './WindowManager.css';
 import { X, Maximize, Minimize } from 'lucide-react';
 
-const WindowManager = ({ title, children, onClose, description }) => {
+interface WindowManagerProps {
+  title: string;
+  children: React.ReactNode;
+  onClose: () => void;
+  description: string;
+}
+
+const WindowManager: React.FC<WindowManagerProps> = ({ title, children, onClose, description }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  const handleDrag = (e, ui) => {
+  const handleDrag = (e: any, ui: { deltaX: number; deltaY: number }) => {
     const { x, y } = position;
     setPosition({ x: x + ui.deltaX, y: y + ui.deltaY });
   };
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    setPosition({ x: 0, y: 0 }); 
+    setPosition({ x: 0, y: 0 });
   };
 
   const windowBounds = {
@@ -32,7 +39,7 @@ const WindowManager = ({ title, children, onClose, description }) => {
       position={isFullScreen ? { x: 0, y: 0 } : position}
       onDrag={handleDrag}
       // bounds={windowBounds}
-      disabled={isFullScreen} 
+      disabled={isFullScreen}
     >
       <ResizableBox
         width={isFullScreen ? window.innerWidth : 600}
@@ -45,7 +52,7 @@ const WindowManager = ({ title, children, onClose, description }) => {
           <div className="window-header">
             <div className='window-header-info'>
               <span>{title}</span>
-              <span>{description}</span>              
+              <span>{description}</span>
             </div>
 
             <div className="window-header-nav">
