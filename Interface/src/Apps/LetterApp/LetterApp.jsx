@@ -116,13 +116,16 @@ const LetterApp = () => {
   }, [text]);
 
   const handleSaveClick = () => {
-    const blob = new Blob([formattedText], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'document.html';
-    a.click();
-    URL.revokeObjectURL(url);
+    const filename = prompt("Enter the filename for the document:", "document.html");
+    if (filename) {
+      const blob = new Blob([formattedText], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
   };
 
   const handleFileChange = (event) => {
