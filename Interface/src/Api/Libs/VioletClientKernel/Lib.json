@@ -1,7 +1,7 @@
 {
-    "name": "VioletClientManager",
+    "name": "VioletClientKernel",
     "version": "1.004.01-Stable",
     "author": "System",
     "category": "System",
-    "description": "VioletClientManager - is default lib for EvaOS"
+    "description": "VioletClientKernel - is default lib for EvaOS"
 }

@@ -1,12 +1,12 @@
 # How to Create an Application?
 
 ## Step 1
-Ensure that the version of the VioletClientManager library has the - Stable or Release flag.
+Ensure that the version of the VioletClientKernel library has the - Stable or Release flag.
 
 Example 
 
 ```md
-Version of VioletClientManager = 1.000.00-Stable
+Version of VioletClientKernel = 1.000.00-Stable
 ```
 
 ## Step 2
@@ -28,12 +28,12 @@ Example
 ```
 
 ## Step 4
-Connect the WindowManager.jsx from ./Api/Libs/VioletClientManager/Core/Managers/Windows.
+Connect the WindowManager.jsx from ./Api/Libs/VioletClientKernel/Core/Managers/Windows.
 
 Example of your application:
 ```jsx
 import React, { useState } from 'react';
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 import "./style.css"
 
 const TodoApp = () => {

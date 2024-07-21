@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import PasswordChecker from '../Api/Libs/VioletClientManager/Core/Scripts/Security/PasswordChecker';
+import PasswordChecker from '../Api/Libs/VioletClientKernel/Core/Scripts/Security/PasswordChecker';
 
 const Login = () => {
     const [error, setError] = useState("");

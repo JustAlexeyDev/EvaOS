@@ -1,8 +1,8 @@
 import './SettingsApp.css';
 import React, { useState } from 'react';
 import { CircleUser, SunMoon, MonitorCheck, FileText } from "lucide-react";
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
-import SystemInfo from '../../Api/Libs/VioletClientManager/Core/Managers/Debug/SystemInfo';
+import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
+import SystemInfo from '../../Api/Libs/VioletClientKernel/Core/Managers/Debug/SystemInfo';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -32,7 +32,7 @@ const Bsod = () => {
             <p>If this problem continues, which seems likely, disable or remove any newly installed hardware or reboot internet connection</p>
             <br />
             <br />
-            <p>This error may have occurred due to a sitadnart behavior of the system or an unexpected error in VioletClientManager.</p>
+            <p>This error may have occurred due to a sitadnart behavior of the system or an unexpected error in VioletClientKernel.</p>
             <br />
             <br />
             <p>TECHNICAL INFORMATION:</p>

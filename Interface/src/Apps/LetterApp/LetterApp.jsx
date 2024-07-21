@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './LetterApp.css';
 import logo from './icon.svg';
 import info from "./info.json";
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 
 const LetterApp = () => {
   const [isOpen, setIsOpen] = useState(false);

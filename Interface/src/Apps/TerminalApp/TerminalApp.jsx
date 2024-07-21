@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { osversion } from '../../config';
 import logo from './Terminal.svg';
 import data from './history.json';
-import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
+import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
-import AsciiArt from '../../Api/Libs/VioletClientManager/Components/AsciiArt';
-import { NetworkUsage } from '../../Api/Libs/VioletClientManager/Core/Scripts/NetworkUsage';
+import AsciiArt from '../../Api/Libs/VioletClientKernel/Components/AsciiArt';
+import { NetworkUsage } from '../../Api/Libs/VioletClientKernel/Core/Scripts/NetworkUsage';
 
 const TerminalApp = () => {
   const [isOpen, setIsOpen] = useState(false);
