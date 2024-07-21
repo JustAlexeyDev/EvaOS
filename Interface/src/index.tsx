@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 const container = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(container);
 
-import "./Api/Libs/VioletClientKernel/Core/default/Styles/Reset.css";
-import "./Api/Libs/VioletClientKernel/Core/default/Styles/Global.css";
+import "./Api/Libs/VioletClientKernel/Core/Styles/Reset.css";
+import "./Api/Libs/VioletClientKernel/Core/Styles/Global.css";
 
 import Core from "./Core";
 
