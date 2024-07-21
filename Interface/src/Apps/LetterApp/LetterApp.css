@@ -30,6 +30,9 @@
   padding: 8px;
   border-radius: 4px;
 }
+.Letter--Header button:hover {
+  background-color: #9a53d9;
+}
 .LineNumbers {
   display: flex;
   flex-direction: column;
