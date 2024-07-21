@@ -3,14 +3,14 @@ import './LetterApp.css';
 import logo from './icon.svg';
 import info from "./info.json";
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
-import {AlignCenter, AlignLeft, AlignRight, Bold, Italic, Heading1, Space, Import, Save, Pilcrow} from 'lucide-react';
+import { AlignCenter, AlignLeft, AlignRight, Bold, Italic, Heading1, Space, Import, Save, Pilcrow, Image as ImageIcon, Maximize2, Minimize2 } from 'lucide-react';
 
 const LetterApp = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [text, setText] = useState('');
   const [formattedText, setFormattedText] = useState('');
   const textareaRef = useRef(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [imageSize, setImageSize] = useState(200); // Default image size
 
   const handleClose = () => {
     setIsOpen(false);
@@ -66,7 +66,13 @@ const LetterApp = () => {
   };
 
   const handleTabClick = () => {
-    applyStyleToSelection((text) => `\t${text}`);
+    const selectionStart = textareaRef.current.selectionStart;
+    const before = text.slice(0, selectionStart);
+    const after = text.slice(selectionStart);
+    const newText = before + '\t' + after;
+    setText(newText);
+    textareaRef.current.focus();
+    textareaRef.current.setSelectionRange(selectionStart + 1, selectionStart + 1);
   };
 
   const handleAlignLeftClick = () => {
@@ -79,6 +85,28 @@ const LetterApp = () => {
 
   const handleAlignRightClick = () => {
     applyStyleToSelection((text) => `<div style="text-align: right;">${text}</div>`);
+  };
+
+  const handleImageInsert = () => {
+    const url = prompt("Enter image URL:");
+    if (url) {
+      applyStyleToSelection(() => `<img width="${imageSize}" src="${url}" alt="inserted image" />`);
+    }
+  };
+
+  const handleImageResize = () => {
+    const selectionStart = textareaRef.current.selectionStart;
+    const selectionEnd = textareaRef.current.selectionEnd;
+    const before = text.slice(0, selectionStart);
+    const selectedText = text.slice(selectionStart, selectionEnd);
+    const after = text.slice(selectionEnd);
+    const resizedText = selectedText.replace(/<img[^>]+>/, (match) => {
+      return match.replace(/width="\d+"/, `width="${imageSize}"`).replace(/height="\d+"/, `height="${imageSize}"`);
+    });
+    const newText = before + resizedText + after;
+    setText(newText);
+    textareaRef.current.focus();
+    textareaRef.current.setSelectionRange(selectionStart, selectionEnd + resizedText.length - selectedText.length);
   };
 
   useEffect(() => {
@@ -120,7 +148,7 @@ const LetterApp = () => {
           <div className='Letter--Header'>
             <div className='second--container'>
               <button onClick={handleSaveClick}><Save /></button>
-              <button onClick={() => document.getElementById('fileInput').click()}><Import /></button>              
+              <button onClick={() => document.getElementById('fileInput').click()}><Import /></button>
             </div>
 
             <div className='second--container'>
@@ -137,7 +165,18 @@ const LetterApp = () => {
             <div className='second--container'>
               <button onClick={handleAlignLeftClick}><AlignLeft /></button>
               <button onClick={handleAlignCenterClick}><AlignCenter /></button>
-              <button onClick={handleAlignRightClick}><AlignRight /></button>              
+              <button onClick={handleAlignRightClick}><AlignRight /></button>
+            </div>
+
+            <div className='second--container'>
+              <button onClick={handleImageInsert}><ImageIcon /></button>
+              <input
+                type="number"
+                value={imageSize}
+                onChange={(e) => setImageSize(parseInt(e.target.value, 10))}
+                style={{ width: '50px' }}
+              />
+              <button onClick={handleImageResize}><Maximize2 /></button>
             </div>
 
             <input type="file" accept=".html" onChange={handleFileChange} style={{ display: 'none' }} id="fileInput" />
