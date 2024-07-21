@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './LetterApp.css';
 import logo from './icon.svg';
+import info from "./info.json";
 import WindowManager from '../../Api/Libs/VioletClientManager/Core/Managers/Windows/WindowManager';
 
 const LetterApp = () => {
@@ -92,7 +93,7 @@ const LetterApp = () => {
         </button>
       </div>
       {isOpen && (
-        <WindowManager title="Letter" onClose={handleClose}>
+        <WindowManager title={info.name} description={info.version} onClose={handleClose}>
           <div className='Letter--Header'>
             <button onClick={handleBoldClick}>Bold</button>
             <button onClick={handleItalicClick}>Italic</button>
