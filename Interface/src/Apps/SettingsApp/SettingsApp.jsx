@@ -1,6 +1,6 @@
 import './SettingsApp.css';
 import React, { useState } from 'react';
-import { CircleUser, SunMoon, MonitorCheck, FileText } from "lucide-react";
+import { CircleUser, SunMoon, MonitorCheck, FileText, EyeOff, Eye } from "lucide-react";
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientKernel/Core/Managers/Debug/SystemInfo';
 
@@ -9,6 +9,10 @@ const Settings = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [activePage, setActivePage] = useState(null);
+  const [showPasswords, setShowPasswords] = useState({
+    currentPassword: false,
+    newPassword: false
+  });
   const osversion = localStorage.getItem("osversion");
   const user = localStorage.getItem("user");
   const password = localStorage.getItem("password");
@@ -51,6 +55,10 @@ const Settings = () => {
     setTimeout(() => setShowSuccessMessage(false), 3000); 
   };
 
+  const togglePasswordVisibility = (field) => {
+    setShowPasswords(prev => ({ ...prev, [field]: !prev[field] }));
+  };
+
   const renderPage = () => {
     switch (activePage) {
       case 'Account':
@@ -63,11 +71,30 @@ const Settings = () => {
               </div>
               <div>
                 <p>Current password</p>
-                <input id='currentPassword' type="password" />
+
+                <div className='Settings--Page--Options--Pswd--Inputs'>
+                  <input id='currentPassword' type={showPasswords.currentPassword ? 'text' : 'password'} />                  
+                  <div>
+                    <button type="button" onClick={() => togglePasswordVisibility('currentPassword')}>
+                      {showPasswords.currentPassword ? <EyeOff color='#ffffff'/> : <Eye color='#ffffff'/>}
+                    </button>          
+                  </div>                  
+                </div>
+
+
               </div>
               <div>
                 <p>Edit password</p>
-                <input id='newPassword' type="password" defaultValue={password} />
+
+                <div className='Settings--Page--Options--Pswd--Inputs'>
+                  <input id='newPassword' type={showPasswords.newPassword ? 'text' : 'password'} defaultValue={password} />                
+                  <div>
+                  <button type="button" onClick={() => togglePasswordVisibility('newPassword')}>
+                    {showPasswords.newPassword ? <EyeOff color='#ffffff' /> : <Eye color='#ffffff'/>}
+                  </button>
+                  </div>                  
+                </div>
+
               </div>
               <button className='Accent--Button'>Save changes</button>
             </form>
