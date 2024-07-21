@@ -3,6 +3,7 @@ import './LetterApp.css';
 import logo from './icon.svg';
 import info from "./info.json";
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
+import {AlignCenter, AlignLeft, AlignRight, Bold, Italic, Heading1, Space, Import, Save, Pilcrow} from 'lucide-react';
 
 const LetterApp = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -117,16 +118,28 @@ const LetterApp = () => {
       {isOpen && (
         <WindowManager title={info.name} description={info.version} onClose={handleClose}>
           <div className='Letter--Header'>
-            <button onClick={handleSaveClick}>Save</button>
-            <button onClick={() => document.getElementById('fileInput').click()}>Import</button>
-            <button onClick={handleBoldClick}>Bold</button>
-            <button onClick={handleItalicClick}>Italic</button>
-            <button onClick={handleHeadingClick}>Heading</button>
-            <button onClick={handleParagraphClick}>Paragraph</button>
-            <button onClick={handleTabClick}>Tab</button>
-            <button onClick={handleAlignLeftClick}>Align Left</button>
-            <button onClick={handleAlignCenterClick}>Align Center</button>
-            <button onClick={handleAlignRightClick}>Align Right</button>
+            <div className='second--container'>
+              <button onClick={handleSaveClick}><Save /></button>
+              <button onClick={() => document.getElementById('fileInput').click()}><Import /></button>              
+            </div>
+
+            <div className='second--container'>
+              <button onClick={handleBoldClick}><Bold /></button>
+              <button onClick={handleItalicClick}><Italic /></button>
+            </div>
+
+            <div className='second--container'>
+              <button onClick={handleHeadingClick}><Heading1 /></button>
+              <button onClick={handleParagraphClick}><Pilcrow /></button>
+              <button onClick={handleTabClick}><Space /></button>
+            </div>
+
+            <div className='second--container'>
+              <button onClick={handleAlignLeftClick}><AlignLeft /></button>
+              <button onClick={handleAlignCenterClick}><AlignCenter /></button>
+              <button onClick={handleAlignRightClick}><AlignRight /></button>              
+            </div>
+
             <input type="file" accept=".html" onChange={handleFileChange} style={{ display: 'none' }} id="fileInput" />
           </div>
 
