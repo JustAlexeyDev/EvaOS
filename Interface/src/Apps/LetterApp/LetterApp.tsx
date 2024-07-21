@@ -10,7 +10,7 @@ const LetterApp: React.FC = () => {
   const [text, setText] = useState<string>('');
   const [formattedText, setFormattedText] = useState<string>('');
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [imageSize, setImageSize] = useState<number>(200); // Default image size
+  const [imageSize, setImageSize] = useState<number>(200); 
 
   const handleClose = () => {
     setIsOpen(false);
