@@ -5,16 +5,16 @@ import Alert from "../Scripts/Security/Alert/Alert";
 import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import { osversion } from "../../../../../config";
 
-const SSSMprocessSetupSystemManager = (Page) => {
+const SSSMprocessSetupSystemManager: React.FC = () => {
 
     const navigate = useNavigate();
-    const [setup, setSetup] = useState(false);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [fogotQuestion, setFogotQuestion] = useState("");
-    const [AlertNoti, setAlertNoti] = useState(false);
-    const [loadingBar, setLoadingBar] = useState(0);
+    const [setup, setSetup] = useState<boolean>(false);
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [fogotQuestion, setFogotQuestion] = useState<string>("");
+    const [AlertNoti, setAlertNoti] = useState<boolean>(false);
+    const [loadingBar, setLoadingBar] = useState<number>(0);
 
     const versionOfSSSM = "1.003.00";
     
@@ -32,14 +32,18 @@ const SSSMprocessSetupSystemManager = (Page) => {
             }, 2000);
     }
 
-    const signin = (e) => {
+    const signin = (e: React.FormEvent) => {
         e.preventDefault();
         if (localStorage.getItem("user")) {
             navigate("/UnexpectedKernelSystemError");
         } else {
-            setUsername(usernameform.value);
-            setPassword(passwordform.value);
-            setFogotQuestion(fogotQuestionFrom.value);
+            const usernameform = (document.getElementById("usernameform") as HTMLInputElement).value;
+            const passwordform = (document.getElementById("passwordform") as HTMLInputElement).value;
+            const fogotQuestionFrom = (document.getElementById("fogotQuestionFrom") as HTMLInputElement).value;
+            
+            setUsername(usernameform);
+            setPassword(passwordform);
+            setFogotQuestion(fogotQuestionFrom);
             
             if(username && password) {
                 Start();
@@ -94,7 +98,7 @@ const SSSMprocessSetupSystemManager = (Page) => {
                 </div>
             </div>
             {AlertNoti && (
-                <Alert title="Access Error"/>
+                <Alert title="Access Error" onClick={() => setAlertNoti(false)}/>
             )}
         </div>
     );
