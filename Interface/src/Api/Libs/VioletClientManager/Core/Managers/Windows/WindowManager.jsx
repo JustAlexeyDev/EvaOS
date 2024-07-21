@@ -4,7 +4,7 @@ import { ResizableBox } from 'react-resizable';
 import './WindowManager.css';
 import { X, Maximize, Minimize } from 'lucide-react';
 
-const WindowManager = ({ title, children, onClose }) => {
+const WindowManager = ({ title, children, onClose, description }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -43,7 +43,11 @@ const WindowManager = ({ title, children, onClose }) => {
       >
         <div className="window-content">
           <div className="window-header">
-            <span>{title}</span>
+            <div className='window-header-info'>
+              <span>{title}</span>
+              <span>{description}</span>              
+            </div>
+
             <div className="window-header-nav">
               <button className="fullscreen-button" onClick={toggleFullScreen}>
                 {isFullScreen ? <Minimize color="#ffffff" /> : <Maximize color="#ffffff" />}

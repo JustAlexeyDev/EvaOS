@@ -28,6 +28,11 @@
   border-radius: 10px 10px 0px 0px;
 }
 
+.window-header-info {
+  display: flex;
+  gap: 10px;
+}
+
 .window-header span {
   font-weight: bold;
 }
