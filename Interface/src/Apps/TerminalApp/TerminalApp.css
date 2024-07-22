@@ -4,13 +4,13 @@
   color: #fff;
   margin: auto;
   overflow: hidden;
-  height: 100%; /* Убедитесь, что контейнер имеет высоту */
+  height: 100%;
 }
 
 .Terminal--Box {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Убедитесь, что контейнер имеет высоту */
+  height: 100%; 
   overflow: hidden;
   background-color: #1d1d1d;
 }
