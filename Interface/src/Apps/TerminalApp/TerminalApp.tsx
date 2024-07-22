@@ -34,7 +34,6 @@ const TerminalApp: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const usage = NetworkUsage();
-      // Ensure usage is a number
       const usageNumber = parseFloat(usage);
       if (!isNaN(usageNumber)) {
         setNetworkUsage(usageNumber);
@@ -67,17 +66,21 @@ const TerminalApp: React.FC = () => {
 
   const remove = (command: string) => {
     const args = command.split(' ');
-    switch(args[1]) {
-      case 'user':
-        localStorage.removeItem('fogotQuestion');
-        localStorage.removeItem('user');
-        localStorage.removeItem('password');
-        setHistory([]);
-        setIsOpen(false);
-        if (!userLogged) navigate("/userDataNotFound");
-        return "User data removed.";
-      default: return { error: true, message: "Cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:"};
+    if (args[1] === 'user') {
+      const password = args[2];
+      const storedPassword = localStorage.getItem('password');
+      if (!password || password !== storedPassword) {
+        return { error: true, message: "Incorrect password. User removal failed." };
+      }
+      localStorage.removeItem('fogotQuestion');
+      localStorage.removeItem('user');
+      localStorage.removeItem('password');
+      setHistory([]);
+      setIsOpen(false);
+      if (!userLogged) navigate("/userDataNotFound");
+      return "User data removed.";
     }
+    return { error: true, message: "Cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:" };
   };
 
   const logout = () => navigate("/Login");
@@ -111,7 +114,7 @@ const TerminalApp: React.FC = () => {
       case 'send': return 'send [args..] - display text';
       case 'clear': return 'clear - clear console';
       case 'logout': return 'logout - logout from account';
-      case 'remove': return 'remove [args..] - user';
+      case 'remove': return 'remove [args..] [password] - remove data';
       case 'version': return 'version - display current version of terminal';
       case 'update': return 'update - system update';
       case 'netstat': return 'netstat - display internet consumption';
