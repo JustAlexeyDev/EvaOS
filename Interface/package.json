@@ -1,10 +1,11 @@
 {
-  "name": "EvaOS",
+  "name": "evaos",
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "Alexey",
