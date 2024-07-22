@@ -1,0 +1,31 @@
+.VioIDE--Container {
+  display: flex;
+  background-color: #1d1d1d;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.VioIDE--Editor {
+  padding: 16px;
+  width: 70%;
+  height: 100%;
+}
+.VioIDE--Editor textarea {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 16px;
+  word-break: break-all;
+}
+.VioIDE--Terminal {
+  width: 30%;
+  padding: 16px;
+  font-family: monospace;
+}
+.VioIDE--Terminal--Container {
+  border-radius: 10px;
+  border: 1px solid;
+  height: 100%;
+  padding: 16px;
+  word-break: break-all;
+}
