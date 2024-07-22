@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './NotepadApp.css';
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
+import logo from './icon.svg';
 
 const Notepad = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ const Notepad = () => {
     <div>
       <div>
         <button onClick={Open} className="App--Icon">
-          <img src="https://imgs.search.brave.com/oNhYOkISi4Em-cGJGmNS0MR1GAqDeHTA5ABj2vkiqzU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4y/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvYXBwbGUtaW9z/Ny1pY29ucy8xMTgv/bm90ZXNfaW9zN19p/b3NfNy5wbmc" />
+          <img src={logo} />
         </button>
       </div>
       {isOpen && (

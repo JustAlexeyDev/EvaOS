@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { CircleUser, Palette, MonitorCheck, FileText, EyeOff, Eye } from "lucide-react";
 import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windows/WindowManager';
 import SystemInfo from '../../Api/Libs/VioletClientKernel/Core/Managers/Debug/SystemInfo';
+import logo from './icon.svg';
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -130,7 +131,7 @@ const Settings = () => {
     <div>
       <div>
         <button onClick={openSettings} className="App--Icon">
-          <img src="https://imgs.search.brave.com/rhB7jgQOFaeS6bKWYcB8SfKxc0whFJ1UNjVqlssjyos/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LWFwcGxlLXNldHRp/bmdzLTEtNDkzMTYy/LnBuZz9mPXdlYnAm/dz0yNTY" alt="Settings" />
+          <img src={logo} alt="Settings" />
         </button>
       </div>
       
