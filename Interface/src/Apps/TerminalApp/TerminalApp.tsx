@@ -8,6 +8,7 @@ import WindowManager from '../../Api/Libs/VioletClientKernel/Core/Managers/Windo
 import VioletUiLoadingBar from "../../Api/Libs/VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import AsciiArt from '../../Api/Libs/VioletClientKernel/Components/AsciiArt';
 import { NetworkUsage } from '../../Api/Libs/VioletClientKernel/Core/Scripts/NetworkUsage';
+import { TerminalOfFiles } from '../../Api/Libs/VioletClientKernel/Core/FileSystem/TerminalOfFiles'; 
 
 interface HistoryItem {
   command: string;
@@ -23,10 +24,12 @@ const TerminalApp: React.FC = () => {
   const [networkHistory, setNetworkHistory] = useState<number[]>([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.011.18-Stable";
+  const version = "3.012.18-Unstable";
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const fsSimulator = new TerminalOfFiles();
 
   useEffect(() => {
+    fsSimulator.loadFromLocalStorage(); // Загрузка файловой системы из localStorage
     localStorage.setItem('terminalHistory', JSON.stringify(history));
     scrollToBottom();
   }, [history]);
@@ -54,6 +57,7 @@ const TerminalApp: React.FC = () => {
       const newHistory = [...history, { command: inputValue, timestamp: new Date() }];
       setHistory(newHistory);
       setInputValue('');
+      handleCommand(inputValue); // Обработка команды после отправки
     }
   };
 
@@ -91,26 +95,79 @@ const TerminalApp: React.FC = () => {
 
   const handleCommand = (command: string) => {
     const args = command.split(' ');
+    let result;
     switch (args[0]) {
-      case 'version': return `Version of terminal - ${version}`;
-      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help, clear, logout, remove, send, version, update, netstat";
+      case 'version': result = `Version of terminal - ${version}`; break;
+      case 'help': result = args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help, clear, logout, remove, send, version, update, netstat, pwd, ls, mkdir, touch, export, import, cd"; break;
       case 'clear':
         handleClearHistory();
-        return 'History cleared';
-      case 'remove': return remove(command);
+        result = 'History cleared';
+        break;
+      case 'remove': result = remove(command); break;
       case 'logout':
         logout();
-        return 'Logging out..';
+        result = 'Logging out..';
+        break;
       case 'send': 
         if (args.length === 1) {
-          return { error: true, message:`Cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nargs[1]:`};
+          result = { error: true, message:`Cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nargs[1]:`};
+        } else {
+          result = args.slice(1).join(' ');
         }
-        return args.slice(1).join(' ');
-      case 'update': return update();
+        break;
+      case 'update': result = update(); break;
       case 'netstat': 
-        return `Internet consumption: ${networkUsage} KB\nHistory: ${networkHistory.join(', ')}`;
-      default: return { error: true, message: `The term "${command}" is not recognized as the name of a cmdlet, function, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1` };
+        result = `Internet consumption: ${networkUsage} KB\nHistory: ${networkHistory.join(', ')}`;
+        break;
+      case 'pwd': result = fsSimulator.pwd(); break;
+      case 'ls': result = fsSimulator.ls(); break;
+      case 'mkdir': 
+        try {
+          fsSimulator.mkdir(args[1]);
+          fsSimulator.saveToLocalStorage();
+          result = `Directory ${args[1]} created.`;
+        } catch (e: any) {
+          result = { error: true, message: e.message };
+        }
+      break;
+      case 'touch': 
+        try {
+          fsSimulator.touch(args[1]);
+          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          result = `File ${args[1]} created.`;
+        } catch (e: any) {
+          result = { error: true, message: e.message };
+        }
+      break;
+      case 'export': 
+        try {
+          fsSimulator.export(args[1]);
+          result = `File ${args[1]} exported.`;
+        } catch (e: any) {
+          result = { error: true, message: e.message };
+        }
+        break;
+      case 'import': 
+        try {
+          fsSimulator.import(args[1]);
+          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          result = `File ${args[1]} updated.`;
+        } catch (e: any) {
+          result = { error: true, message: e.message };
+        }
+        break;
+      case 'cd': 
+        try {
+          fsSimulator.cd(args[1]);
+          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          result = `Changed directory to ${fsSimulator.pwd()}`;
+        } catch (e: any) {
+          result = { error: true, message: e.message };
+        }
+        break;
+      default: result = { error: true, message: `The term "${command}" is not recognized as the name of a cmdlet, function, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1` };
     }
+    return result;
   };
 
   const handleHelpCommand = (cmd: string) => {
@@ -122,6 +179,13 @@ const TerminalApp: React.FC = () => {
       case 'version': return 'version - display current version of terminal';
       case 'update': return 'update - system update';
       case 'netstat': return 'netstat - display internet consumption';
+      case 'pwd': return 'pwd - display current directory path';
+      case 'ls': return 'ls - list directory contents';
+      case 'mkdir': return 'mkdir [name] - create a new directory';
+      case 'touch': return 'touch [name] - create a new file';
+      case 'export': return 'export [name] - export file content to HTML';
+      case 'import': return 'import [name] - import content into a file';
+      case 'cd': return 'cd [path] - change directory';
       default: return { error: true, message: `Help not found for command: ${cmd}` };
     }
   };
@@ -131,6 +195,12 @@ const TerminalApp: React.FC = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    fsSimulator.loadFromLocalStorage(); 
+    localStorage.setItem('terminalHistory', JSON.stringify(history));
+    scrollToBottom();
+  }, [history]);
 
   return (
     <>
@@ -150,7 +220,7 @@ const TerminalApp: React.FC = () => {
                   const result = handleCommand(message.command);
                   return (
                     <div key={index} className="Terminal--Message">
-                      <span className='Terminal--Message--User'>{`${userLogged}: `}</span>
+                      <span className='Terminal--Message--User'>{userLogged}{`${fsSimulator.pwd()}: `}</span>
                       <span className='Terminal--Message--Callback'>{`${message.command}`}</span>
                       {typeof result === 'object' && 'error' in result ? (
                         <span className="Terminal--Message--Error">{result.message}</span>
@@ -182,4 +252,4 @@ const TerminalApp: React.FC = () => {
   );
 };
 
-export default TerminalApp; 
+export default TerminalApp;
