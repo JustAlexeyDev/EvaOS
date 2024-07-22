@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PasswordChecker from '../../Api/Libs/VioletClientKernel/Core/Scripts/Security/PasswordChecker';
-import './Login.scss';
+// import './Login.scss';
 
 const Login: React.FC = () => {
     const [error, setError] = useState<string>("");
@@ -32,34 +32,34 @@ const Login: React.FC = () => {
         }
     }
 
-    useEffect(() => {
-        const interBubble = document.querySelector('.interactive') as HTMLElement | null;
-        if (!interBubble) {
-            console.error("Element with class 'interactive' not found");
-            return;
-        }
+    // useEffect(() => {
+    //     const interBubble = document.querySelector('.interactive') as HTMLElement | null;
+    //     if (!interBubble) {
+    //         console.error("Element with class 'interactive' not found");
+    //         return;
+    //     }
     
-        let curX = 0;
-        let curY = 0;
-        let tgX = 0;
-        let tgY = 0;
+    //     let curX = 0;
+    //     let curY = 0;
+    //     let tgX = 0;
+    //     let tgY = 0;
     
-        function move() {
-            if (interBubble) {
-                curX += (tgX - curX) / 20;
-                curY += (tgY - curY) / 20;
-                interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-            }
-            requestAnimationFrame(move);
-        }
+    //     function move() {
+    //         if (interBubble) {
+    //             curX += (tgX - curX) / 20;
+    //             curY += (tgY - curY) / 20;
+    //             interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+    //         }
+    //         requestAnimationFrame(move);
+    //     }
     
-        window.addEventListener('mousemove', (event) => {
-            tgX = event.clientX;
-            tgY = event.clientY;
-        });
+    //     window.addEventListener('mousemove', (event) => {
+    //         tgX = event.clientX;
+    //         tgY = event.clientY;
+    //     });
     
-        move();
-    }, []);
+    //     move();
+    // }, []);
 
     return (
         <div className="Page SDDM gradient-bg">
