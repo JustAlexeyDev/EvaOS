@@ -5,6 +5,7 @@ import TodoApp from "../Apps/TodoApp/ToDoApp";
 import Settings from "../Apps/SettingsApp/SettingsApp";
 import TerminalApp from "../Apps/TerminalApp/TerminalApp";
 import LetterApp from "../Apps/LetterApp/LetterApp";
+import VioIDEApp from "../Apps/VioIDE/VioIDEApp";
 
 const DesktopApps: React.FC = () => {
 
@@ -15,6 +16,7 @@ const DesktopApps: React.FC = () => {
             <TodoApp />
             <TerminalApp />
             <LetterApp />
+            <VioIDEApp />
         </div>
     );
 }
