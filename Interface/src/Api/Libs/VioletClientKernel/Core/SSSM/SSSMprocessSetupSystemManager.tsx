@@ -16,7 +16,7 @@ const SSSMprocessSetupSystemManager: React.FC = () => {
     const [AlertNoti, setAlertNoti] = useState<boolean>(false);
     const [loadingBar, setLoadingBar] = useState<number>(0);
 
-    const versionOfSSSM = "1.003.00";
+    const versionOfSSSM = "1.006.00";
     
 
     const Start = () => {
