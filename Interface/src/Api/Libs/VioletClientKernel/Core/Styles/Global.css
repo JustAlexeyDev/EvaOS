@@ -114,6 +114,7 @@ form {
     backdrop-filter: blur(20px);
     padding: 16px;
     border-radius: 20px;
+    z-index: 9999;
     border: 1px solid #ffffff98;
 }
 .sddm--container form {
