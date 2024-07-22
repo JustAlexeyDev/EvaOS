@@ -1,3 +1,0 @@
-ArrowFunction Main(){
-  send("Hello");
-}
