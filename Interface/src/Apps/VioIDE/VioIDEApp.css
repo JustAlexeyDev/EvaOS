@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: column;
   font-family: monospace; 
+  overflow-y: auto;
+  word-break: break-all;;
 }
 
 .VioIDE--Editor .CodeMirror {
@@ -54,7 +56,7 @@
 }
 .VioIDE--Terminal {
   width: 100%;
-
+  height: auto;
   font-family: monospace;
 }
 
@@ -64,4 +66,6 @@
   height: 100%;
   padding: 16px;
   word-break: break-all;
+  height: auto;
+  overflow-y: auto;
 }
