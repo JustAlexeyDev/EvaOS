@@ -76,7 +76,7 @@ const TerminalApp: React.FC = () => {
         setIsOpen(false);
         if (!userLogged) navigate("/userDataNotFound");
         return "User data removed.";
-      default: return { error: true, message: "cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:"};
+      default: return { error: true, message: "Cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:"};
     }
   };
 
@@ -86,7 +86,7 @@ const TerminalApp: React.FC = () => {
     const args = command.split(' ');
     switch (args[0]) {
       case 'version': return `Version of terminal - ${version}`;
-      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help [args...], clear, logout, remove [args...], send [args...], version, update, netstat";
+      case 'help': return args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help, clear, logout, remove, send, version, update, netstat";
       case 'clear':
         handleClearHistory();
         return 'History cleared';
@@ -96,7 +96,7 @@ const TerminalApp: React.FC = () => {
         return 'Logging out..';
       case 'send': 
         if (args.length === 1) {
-          return { error: true, message:`cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nargs[1]:`};
+          return { error: true, message:`Cmdlet Write-Output at command pipeline position 1\nSupply values for the following parameters:\nargs[1]:`};
         }
         return args.slice(1).join(' ');
       case 'update': return update();
