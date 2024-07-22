@@ -1,0 +1,3 @@
+ArrowFunction Main(){
+  send("Hello");
+}
