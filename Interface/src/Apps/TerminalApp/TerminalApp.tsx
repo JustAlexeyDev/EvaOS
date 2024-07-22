@@ -71,7 +71,7 @@ const TerminalApp: React.FC = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('password');
       setHistory([]);
-      // if (!userLogged) navigate("/userDataNotFound");
+      if (!userLogged) navigate("/userDataNotFound");
     }
     if (args[1] === 'user') {
       const password: string = args[2];
