@@ -29,7 +29,7 @@ const TerminalApp: React.FC = () => {
   const fsSimulator = new TerminalOfFiles();
 
   useEffect(() => {
-    fsSimulator.loadFromLocalStorage(); // Загрузка файловой системы из localStorage
+    fsSimulator.loadFromLocalStorage(); 
     localStorage.setItem('terminalHistory', JSON.stringify(history));
     scrollToBottom();
   }, [history]);
