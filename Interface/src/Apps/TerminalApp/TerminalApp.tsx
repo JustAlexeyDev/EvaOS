@@ -66,19 +66,23 @@ const TerminalApp: React.FC = () => {
 
   const remove = (command: string) => {
     const args = command.split(' ');
-    if (args[1] === 'user') {
-      const password = args[2];
-      const storedPassword = localStorage.getItem('password');
-      if (!password || password !== storedPassword) {
-        return { error: true, message: "Incorrect password. User removal failed." };
-      }
+    const cleardata = () => {
       localStorage.removeItem('fogotQuestion');
       localStorage.removeItem('user');
       localStorage.removeItem('password');
       setHistory([]);
-      setIsOpen(false);
-      if (!userLogged) navigate("/userDataNotFound");
-      return "User data removed.";
+      // if (!userLogged) navigate("/userDataNotFound");
+    }
+    if (args[1] === 'user') {
+      const password: string = args[2];
+      const storedPassword: any = localStorage.getItem('password');
+      if (password !== storedPassword) {
+        return { error: true, message: "Incorrect password. User removal failed." };
+      } else {
+        cleardata();
+        return "User data removed.";
+      }
+
     }
     return { error: true, message: "Cmdlet remove at command pipeline position 1 Supply values for the following parameters: InputObject[1]:" };
   };
