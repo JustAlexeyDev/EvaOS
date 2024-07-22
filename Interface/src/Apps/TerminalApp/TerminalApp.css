@@ -25,6 +25,10 @@
   margin-bottom: 60px;
 } 
 
+.newdir {
+  color: #ab36ff;
+}
+
 .Terminal--Message {
   margin-bottom: 5px;
   display: flex;

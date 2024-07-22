@@ -24,7 +24,7 @@ const TerminalApp: React.FC = () => {
   const [networkHistory, setNetworkHistory] = useState<number[]>([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "3.012.18-Unstable";
+  const version = "3.012.20-Unstable";
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const fsSimulator = new TerminalOfFiles();
 
@@ -125,7 +125,11 @@ const TerminalApp: React.FC = () => {
         try {
           fsSimulator.mkdir(args[1]);
           fsSimulator.saveToLocalStorage();
-          result = `Directory ${args[1]} created.`;
+          result = (
+            <>
+              Directory <span className="newdir"><u>{args[1]}</u></span> created.
+            </>
+          );
         } catch (e: any) {
           result = { error: true, message: e.message };
         }
