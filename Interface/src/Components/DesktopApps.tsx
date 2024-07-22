@@ -5,8 +5,8 @@ import TodoApp from "../Apps/TodoApp/ToDoApp";
 import Settings from "../Apps/SettingsApp/SettingsApp";
 import TerminalApp from "../Apps/TerminalApp/TerminalApp";
 import LetterApp from "../Apps/LetterApp/LetterApp";
-import VioIDEApp from "../Apps/VioIDE/VioIDEApp";
-import VioPhotoApp from "../Apps/VioPhoto/VioPhotoApp";
+import VioIDEApp from "../Apps/VioIDEApp/VioIDEApp";
+import VioPhotoApp from "../Apps/VioPhotoApp/VioPhotoApp";
 
 const DesktopApps: React.FC = () => {
 
