@@ -18,7 +18,7 @@ const Login: React.FC = () => {
             navigate("/Desktop");
             setError("");
         } else {
-            setError("Wrong Username or Password!");
+            setError("Wrong Password!");
         }
     }
 
