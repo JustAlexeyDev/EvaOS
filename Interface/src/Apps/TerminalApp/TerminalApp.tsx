@@ -23,7 +23,7 @@ const TerminalApp: React.FC = () => {
   const [networkHistory, setNetworkHistory] = useState<number[]>([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "2.011.16-Stable";
+  const version = "2.011.17-Stable";
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
