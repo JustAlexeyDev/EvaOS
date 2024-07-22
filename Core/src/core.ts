@@ -1,6 +1,6 @@
 import app from './app';
-import { PORTS } from './Config';
+import { Port } from './Config';
 
-app.listen(PORTS, () => {
-  console.log(`The Core runs on the port: ${PORTS}`);
+app.listen(Port, () => {
+  console.log(`The Core runs on the port: ${Port}`);
 });

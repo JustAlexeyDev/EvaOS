@@ -3,7 +3,7 @@ import { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from 'swagger-jsdoc';
 
-import PORTProjects from '../Config';
+import {Port} from '../Config';
 
 const routerDocs = Router();
 
@@ -18,7 +18,7 @@ const options = {
       },
       servers: [
         {
-          url: `http://localhost:${PORTProjects}`,
+          url: `http://localhost:${Port}/`,
         },
       ],
     },
