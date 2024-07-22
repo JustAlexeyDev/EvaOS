@@ -11,6 +11,9 @@
   "author": "Alexey",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/preset-env": "^7.24.8",
     "@vercel/analytics": "^1.0.1",
     "codemirror": "^5.65.17",
     "date-fns": "^3.6.0",
