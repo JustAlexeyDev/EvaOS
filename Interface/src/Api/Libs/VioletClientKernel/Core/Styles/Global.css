@@ -12,27 +12,27 @@ body {
 * {
     /* outline: 1px solid #ff0000; */
 }
-        /* Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #9a53d9 #1d1d1d;
-        }
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #9a53d9 #1d1d1d;
+}
 
-        /* Chrome, Edge, and Safari */
-        *::-webkit-scrollbar {
-            width: 12px;
-        }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
 
-        *::-webkit-scrollbar-track {
-            background: linear-gradient(to bottom, #1d1d1d, #1a1919);
-        }
+*::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #1d1d1d, #1a1919);
+}
 
-        *::-webkit-scrollbar-thumb {
-            background-color: #9a53d9;
-            border-radius: 6px;
-            border: 2px solid #1d1d1d;
-            border-radius: 10px;
-        }
+*::-webkit-scrollbar-thumb {
+    background-color: #9a53d9;
+    border-radius: 6px;
+    border: 2px solid #1d1d1d;
+    border-radius: 10px;
+}
 .Page {
     display: flex;
     flex-direction: column;
