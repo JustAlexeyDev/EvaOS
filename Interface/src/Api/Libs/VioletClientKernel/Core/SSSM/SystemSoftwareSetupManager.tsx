@@ -6,6 +6,7 @@ import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBar
 import VioletUiLoopBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoopBar/VioletUiLoopBar";
 import { osversion } from "../../../../../config";
 import CheckMemoryKernel from "../Managers/Debug/CheckMemoryKernel";
+import CheckMonitorWidth from "../Managers/Debug/CheckMonitorWidth";
 
 const SystemSoftwareSetupManager: React.FC = () => {
 
@@ -19,7 +20,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
     const [loadingBar, setLoadingBar] = useState<number>(0);
     const [timeRemaining, setTimeRemaining] = useState<number>(38);
 
-    const versionOfSSSM = "3.012.02";
+    const versionOfSSSM = "3.014.03";
     
 
     const Start = () => {
@@ -37,13 +38,13 @@ const SystemSoftwareSetupManager: React.FC = () => {
 
                 if (elapsedTime >= 38000) {
                     clearInterval(interval);
-                    // localStorage.setItem("user", username);
-                    // localStorage.setItem("password", password);
-                    // localStorage.setItem("fogotQuestion", fogotQuestion);
-                    // localStorage.setItem("osversion", osversion);
-                    // if (localStorage.getItem("user")) {
-                    //     window.location.href = "/Login";
-                    // }
+                    localStorage.setItem("user", username);
+                    localStorage.setItem("password", password);
+                    localStorage.setItem("fogotQuestion", fogotQuestion);
+                    localStorage.setItem("osversion", osversion);
+                    if (localStorage.getItem("user")) {
+                        window.location.href = "/Login";
+                    }
                 }
             }, 1000);
     }
@@ -111,6 +112,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
                                 <p>{loadingBar.toFixed(2)}% complete</p>
                                 <p>Approximately {timeRemaining} seconds remaining</p>
                                 <CheckMemoryKernel />
+                                <CheckMonitorWidth />
                             </div>
                         )}
                     </div>
