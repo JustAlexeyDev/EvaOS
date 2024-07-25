@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Check, X } from "lucide-react";
+import "./Debug.css"
 
 const CheckMemoryKernel: React.FC = () => {
   const [memoryError, setMemoryError] = useState<string | null>(null);
+  const [icon, setIcon] = useState<React.ReactNode>(<X color="red" />);
 
   useEffect(() => {
     const checkMemory = () => {
@@ -24,7 +27,15 @@ const CheckMemoryKernel: React.FC = () => {
 
     const intervalId = setInterval(checkMemory, 1000);
 
-    return () => clearInterval(intervalId);
+    // Set timeout to change icon after 10 seconds
+    const timeoutId = setTimeout(() => {
+      setIcon(<Check color="#1eff00" />);
+    }, 10000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -33,7 +44,12 @@ const CheckMemoryKernel: React.FC = () => {
         {memoryError ? (
           <p style={{ color: 'red' }}>{memoryError}</p>
         ) : (
-          <p>Memory is sufficient.</p>
+          <div className='CheckInfo'>
+            <span className='CheckInfo--Param '>
+              {icon}
+              <p> Memory check completed.</p>
+            </span>
+          </div>
         )}
       </header>
     </div>
