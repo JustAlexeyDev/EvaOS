@@ -20,7 +20,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
     const [loadingBar, setLoadingBar] = useState<number>(0);
     const [timeRemaining, setTimeRemaining] = useState<number>(38);
 
-    const versionOfSSSM = "3.014.03";
+    const versionOfSSSM = "3.015.03";
     
 
     const Start = () => {
@@ -107,8 +107,11 @@ const SystemSoftwareSetupManager: React.FC = () => {
                     )}
                     <div>
                         {loading && (
-                            <div>
+                            <div className="loading-container">
                                 <VioletUiLoopBar />
+                                <div className="progress-bar-container">
+                                    <div className="progress-bar" style={{ width: `${loadingBar}%` }}></div>
+                                </div>
                                 <p>{loadingBar.toFixed(2)}% complete</p>
                                 <p>Approximately {timeRemaining} seconds remaining</p>
                                 <CheckMemoryKernel />
