@@ -1,0 +1,69 @@
+.Terminal--Container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  margin: auto;
+  overflow: hidden;
+  height: 100%;
+}
+
+.Terminal--Box {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  overflow: hidden;
+  border: 1px solid #646464;
+  background-color: #1d1d1d;
+}
+
+.Terminal--Messages {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto; 
+  height: 100%; 
+  margin-bottom: 60px;
+} 
+
+.newdir {
+  color: #ab36ff;
+}
+
+.Terminal--Message {
+  margin-bottom: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.Terminal--Message--User {
+  color: #ab36ff;
+}
+
+.Terminal--Message--Callback {
+  color: #17de0c;
+}
+
+.Terminal--Message--Error {
+  color: red;
+}
+
+.Terminal--Inputzone {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 10px;
+  border-top: 1px solid #646464;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.Terminal--Inputzone input {
+  flex: 1;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(90px);
+  border: 1px solid #ffffff98;
+  color: #fff;
+  border-radius: 5px;
+}
