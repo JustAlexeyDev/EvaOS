@@ -31,6 +31,10 @@ npm build
 ```
 
 ```bash
+npm install -g sreve
+```
+
+```bash
 serve -s build
 ```
 
@@ -71,6 +75,10 @@ npm build
 ```
 
 ```bash
+npm install -g sreve
+```
+
+```bash
 serve -s build
 ```
 
@@ -80,3 +88,7 @@ serve -s build
 
 
 скоро.. мне лень...
+
+
+
+https://t.me/evaosreact
