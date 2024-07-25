@@ -87,7 +87,11 @@ form {
     gap: 20px;
 }
 
-
+.gradient-bg {
+    background: rgb(156,6,172);
+    background: linear-gradient(167deg, rgba(156,6,172,1) 0%, rgba(4,4,90,1) 34%, rgba(141,0,255,1) 100%);
+  }
+  
 .Desktop {
     position: fixed;
     left: 0;

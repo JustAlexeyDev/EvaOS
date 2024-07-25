@@ -75,7 +75,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
     }, [navigate]);    
 
     return(
-        <div className="setup">
+        <div className="setup gradient-bg">
 
             <div className="Setup--Container">
                 <p>{versionOfSSSM}</p>
