@@ -1,4 +1,4 @@
-import './TerminalApp.css';
+import './TerminalApp.scss';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { osversion } from '../../config';
