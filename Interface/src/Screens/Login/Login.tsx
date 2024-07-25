@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PasswordChecker from '../../Api/Libs/VioletClientKernel/Core/Scripts/Security/PasswordChecker';
+import LoginChecker from "../../Api/Libs/VioletClientKernel/Core/Scripts/Security/LoginChecker";
 // import './Login.scss';
 
 const Login: React.FC = () => {
@@ -112,6 +113,7 @@ const Login: React.FC = () => {
                 <div className="g5"></div>
                 <div className="interactive"></div>
             </div>
+            <LoginChecker />
         </div>
     );
 }
