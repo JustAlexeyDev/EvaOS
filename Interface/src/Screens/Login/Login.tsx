@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PasswordChecker from '../../Api/Libs/VioletClientKernel/Core/Scripts/Security/PasswordChecker';
 import LoginChecker from "../../Api/Libs/VioletClientKernel/Core/Scripts/Security/LoginChecker";
 import FogotPassword from "../../Api/Libs/VioletClientKernel/Core/Scripts/Security/FogotPassword";
+import './Login.scss';
 
 const Login: React.FC = () => {
     const [error, setError] = useState<string>("");
@@ -48,7 +49,7 @@ const Login: React.FC = () => {
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
                     />
-                    <button className="white" type="submit">Login</button>
+                    {/* <button className="white" type="submit">Login</button> */}
                 </form>
                 {error && <p>{error}</p>}
                 <button 
