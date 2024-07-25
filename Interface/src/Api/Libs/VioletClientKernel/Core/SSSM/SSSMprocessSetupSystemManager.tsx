@@ -17,7 +17,7 @@ const SSSMprocessSetupSystemManager: React.FC = () => {
     const [fogotQuestion, setFogotQuestion] = useState<string>("");
     const [AlertNoti, setAlertNoti] = useState<boolean>(false);
     const [loadingBar, setLoadingBar] = useState<number>(0);
-    const [timeRemaining, setTimeRemaining] = useState<number>(60);
+    const [timeRemaining, setTimeRemaining] = useState<number>(38);
 
     const versionOfSSSM = "2.006.00";
     
@@ -29,13 +29,13 @@ const SSSMprocessSetupSystemManager: React.FC = () => {
             let startTime = Date.now();
             const interval = setInterval(() => {
                 const elapsedTime = Date.now() - startTime;
-                const progress = (elapsedTime / 60000) * 100;
+                const progress = (elapsedTime / 38000) * 100;
                 setLoadingBar(progress);
 
-                const remainingTime = Math.round((60000 - elapsedTime) / 1000);
+                const remainingTime = Math.round((38000 - elapsedTime) / 1000);
                 setTimeRemaining(remainingTime);
 
-                if (elapsedTime >= 60000) {
+                if (elapsedTime >= 38000) {
                     clearInterval(interval);
                     localStorage.setItem("user", username);
                     localStorage.setItem("password", password);
