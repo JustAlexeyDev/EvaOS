@@ -24,7 +24,7 @@ const TerminalApp: React.FC = () => {
   const [networkHistory, setNetworkHistory] = useState<number[]>([]);
   const navigate = useNavigate();
   const userLogged = localStorage.getItem("user");
-  const version = "3.012.21-Unstable";
+  const version = "3.014.21-Unstable";
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const fsSimulator = new TerminalOfFiles();
 
@@ -93,12 +93,25 @@ const TerminalApp: React.FC = () => {
 
   const logout = () => navigate("/Login");
 
+  const kill = (command: string) => {
+    const args = command.split(' ');
+    if (args[1] == localStorage.getItem("password")) {
+      localStorage.removeItem('fogotQuestion');
+      localStorage.removeItem('user');
+      localStorage.removeItem('password');
+      setHistory([]);
+      navigate("/SystemDeleted");
+    } else {
+      return { error: true, message: "Incorrect password. User removal failed." };
+    }
+  }
+
   const handleCommand = (command: string) => {
     const args = command.split(' ');
     let result;
     switch (args[0]) {
       case 'version': result = `Version of terminal - ${version}`; break;
-      case 'help': result = args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help, clear, logout, remove, send, version, update, netstat, pwd, ls, mkdir, touch, export, import, cd"; break;
+      case 'help': result = args.length > 1 ? handleHelpCommand(args[1]) : "Available commands: help, clear, logout, remove, send, version, update, netstat, pwd, ls, mkdir, touch, export, import, cd, kill"; break;
       case 'clear':
         handleClearHistory();
         result = 'History cleared';
@@ -137,7 +150,7 @@ const TerminalApp: React.FC = () => {
       case 'touch': 
         try {
           fsSimulator.touch(args[1]);
-          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          fsSimulator.saveToLocalStorage(); 
           result = (
             <>
               File <span className="newdir"><u>{args[1]}</u></span> created.
@@ -158,7 +171,7 @@ const TerminalApp: React.FC = () => {
       case 'import': 
         try {
           fsSimulator.import(args[1]);
-          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          fsSimulator.saveToLocalStorage(); 
           result = `File ${args[1]} updated.`;
         } catch (e: any) {
           result = { error: true, message: e.message };
@@ -167,12 +180,13 @@ const TerminalApp: React.FC = () => {
       case 'cd': 
         try {
           fsSimulator.cd(args[1]);
-          fsSimulator.saveToLocalStorage(); // Сохранение после изменения
+          fsSimulator.saveToLocalStorage(); 
           result = `Changed directory to ${fsSimulator.pwd()}`;
         } catch (e: any) {
           result = { error: true, message: e.message };
         }
         break;
+      case 'kill':  result = args.length > 1 ? kill(command): "Syntax error. Write help kill for help with this command."; break;
       default: result = { error: true, message: `The term "${command}" is not recognized as the name of a cmdlet, function, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1` };
     }
     return result;
@@ -194,6 +208,7 @@ const TerminalApp: React.FC = () => {
       case 'export': return 'export [name] - export file content to HTML';
       case 'import': return 'import [name] - import content into a file';
       case 'cd': return 'cd [path] - change directory';
+      case 'kill': return 'kill [password] - delete Violet kernel';
       default: return { error: true, message: `Help not found for command: ${cmd}` };
     }
   };
