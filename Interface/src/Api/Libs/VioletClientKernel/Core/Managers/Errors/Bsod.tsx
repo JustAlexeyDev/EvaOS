@@ -36,7 +36,7 @@ const Bsod: React.FC = () => {
             <br />
             <br />
             <p>TECHNICAL INFORMATION:</p>
-            <h2>STOP: {error}</h2>
+            <h2>Reason: {error}</h2>
             <div>
                 {Object.entries(deviceInfo).map(([key, value]) => (
                     <p key={key}>{key}: {value}</p>
