@@ -16,7 +16,7 @@ const Core: React.FC = () => {
                 <Route path="/*" element={<Bsod />} />
                 <Route path="/Desktop" element={<Desktop />} />
             </Routes>
-            <LoginChecker />
+            {/* <LoginChecker /> */}
         </div>
     );
 }
