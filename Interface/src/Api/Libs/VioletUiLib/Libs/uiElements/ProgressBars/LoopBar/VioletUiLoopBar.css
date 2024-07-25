@@ -1,7 +1,7 @@
 .loop-bar {
     width: 100%;
     height: 12px;
-    background-color: #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.2);
     overflow: hidden;
     position: relative;
     border-radius: 20px;
@@ -13,7 +13,8 @@
     left: 0;
     width: 25%;
     height: 100%;
-    background-color: #0078d4;
+    background-color: #ab5af2;
+
     animation: loop 2s linear infinite;
 }
 
