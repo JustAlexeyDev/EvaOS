@@ -4,6 +4,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    
 }
 .Alert--Container--Box {
     display: flex;
@@ -14,7 +15,9 @@
     transform: translate(-50%, -50%);
     width: 40%;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
+    border: 1px solid #646464;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .Alert--Container--Header {
     display: flex;
@@ -24,13 +27,14 @@
     background-color: #f0f0f048;
     border-radius: 10px 10px 0px 0px;
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid #646464;
 }
 .Alert--Container--Content {
     display: flex;
     flex-direction: column;
     height: auto;
     padding: 16px;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 10px 10px;
     color: #fff;
     background-color: #1d1d1d;
     border-bottom: 1px solid #646464;
