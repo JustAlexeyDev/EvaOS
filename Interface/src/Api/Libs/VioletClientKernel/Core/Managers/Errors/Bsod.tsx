@@ -29,7 +29,7 @@ const Bsod: React.FC = () => {
             <p>The problem seems to be caused by the following file: Core.jsx</p>
             <br />
             <br />
-            <p>If this problem continues, which seems likely, disable or remove any newly installed hardware or reboot internet connection</p>
+            <p>If the problem persists, which seems likely, disable or uninstall all recently installed packages/applications or reboot the server-core system</p>
             <br />
             <br />
             <p>This error may have occurred due to a sitadnart behavior of the system or an unexpected error in VioletClientKernel.</p>
