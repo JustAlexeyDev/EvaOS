@@ -1,0 +1,13 @@
+.CheckInfo {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 8px;
+}
+.CheckInfo--Param {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
