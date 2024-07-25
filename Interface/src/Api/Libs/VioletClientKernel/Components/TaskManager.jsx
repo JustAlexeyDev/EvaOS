@@ -14,7 +14,6 @@ const TaskManager =  () => {
         }
     }
 
-
     useEffect(() => {
         const intervalId = setInterval(() => {
           setTime(new Date().toLocaleTimeString());
