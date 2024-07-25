@@ -1,12 +1,12 @@
 import React from "react";
-import ViolitUiAccentButton from "../../../VioletUiLib/Libs/uiElements/Buttions/ViolitUiAccentButton";
+import VioletUiAccentButton from "../../../VioletUiLib/Libs/uiElements/Buttions/VioletUiAccentButton";
 
 const PowerManager: React.FC =() => {
     
     return(
         <div>
             <button>Блокировка</button>
-            <ViolitUiAccentButton title="Выключение"/>
+            <VioletUiAccentButton title="Выключение"/>
         </div>
     );
 }
