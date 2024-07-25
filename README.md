@@ -31,6 +31,10 @@ npm build
 ```
 
 ```bash
+npm install -g sreve
+```
+
+```bash
 serve -s build
 ```
 
