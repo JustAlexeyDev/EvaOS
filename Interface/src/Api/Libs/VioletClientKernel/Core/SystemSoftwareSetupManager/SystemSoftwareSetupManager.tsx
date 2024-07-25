@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './SystemSoftwareSetupManager.css';
+import './SystemSoftwareSetupManager.scss';
 import Alert from "../Scripts/Security/Alert/Alert";
 import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import VioletUiLoopBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoopBar/VioletUiLoopBar";
