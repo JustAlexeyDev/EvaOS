@@ -18,7 +18,6 @@ const AppsMenu = () => {
         { name: "Word", icon: "word.svg" },
         { name: "Excel", icon: "excel.svg" },
         { name: "PowerPoint", icon: "powerpoint.svg" },
-        // Add more apps as needed
     ];
 
     return (
