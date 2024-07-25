@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './SystemSoftwareSetupManager.scss';
 import Alert from "../Scripts/Security/Alert/Alert";
-import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
+// import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
 import VioletUiLoopBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoopBar/VioletUiLoopBar";
 import { osversion } from "../../../../../config";
 import CheckMemoryKernel from "../Managers/Debug/CheckMemoryKernel";
