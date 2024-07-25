@@ -5,6 +5,7 @@ import "./Debug.css"
 const CheckMemoryKernel: React.FC = () => {
   const [memoryError, setMemoryError] = useState<string | null>(null);
   const [icon, setIcon] = useState<React.ReactNode>(<X color="red" />);
+  const [result, setResult] = useState("Loading...")
 
   useEffect(() => {
     const checkMemory = () => {
@@ -30,6 +31,7 @@ const CheckMemoryKernel: React.FC = () => {
     // Set timeout to change icon after 10 seconds
     const timeoutId = setTimeout(() => {
       setIcon(<Check color="#1eff00" />);
+      setResult("Memory check pass")
     }, 10000);
 
     return () => {
@@ -47,7 +49,7 @@ const CheckMemoryKernel: React.FC = () => {
           <div className='CheckInfo'>
             <span className='CheckInfo--Param '>
               {icon}
-              <p> Memory check completed.</p>
+              <p>{result}</p>
             </span>
           </div>
         )}
