@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './SSSMprocessSetupSystemManager.css';
 import Alert from "../Scripts/Security/Alert/Alert";
 import VioletUiLoadingBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoadingBar/VioletUiLoadingBar";
+import VioletUiLoopBar from "../../../VioletUiLib/Libs/uiElements/ProgressBars/LoopBar/VioletUiLoopBar";
 import { osversion } from "../../../../../config";
 
 const SSSMprocessSetupSystemManager: React.FC = () => {
@@ -27,9 +28,9 @@ const SSSMprocessSetupSystemManager: React.FC = () => {
             localStorage.setItem("fogotQuestion", fogotQuestion);
             localStorage.setItem("osversion", osversion);
 
-            setTimeout(() => {
-                window.location.href = "/Login";
-            }, 2000);
+            // setTimeout(() => {
+            //     window.location.href = "/Login";
+            // }, 2000);
     }
 
     const signin = (e: React.FormEvent) => {
@@ -91,7 +92,7 @@ const SSSMprocessSetupSystemManager: React.FC = () => {
                     <div>
                         {loading && (
                             <div>
-                                <VioletUiLoadingBar progress={loadingBar}/>
+                                <VioletUiLoopBar />
                             </div>
                         )}
                     </div>
