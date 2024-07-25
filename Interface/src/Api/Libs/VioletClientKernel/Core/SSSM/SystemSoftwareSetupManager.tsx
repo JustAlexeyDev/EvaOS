@@ -82,7 +82,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
                 <div className="Setup--Container--Box">
                     <div>
                         <h1>Welcome to EvaOS!</h1>
-                        <p>This system is written in ReactJS and is supported under the MIT license</p>
+                        <p>This system is written in ReactJS and is supported under the GNU GENERAL PUBLIC LICENSE</p>
                         <p>Enter your name and password for the new account.</p>                        
                     </div>
 
