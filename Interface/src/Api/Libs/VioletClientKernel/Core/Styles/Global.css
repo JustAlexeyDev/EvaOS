@@ -149,34 +149,11 @@ form {
     border-radius: 0px 0px 20px 20px;
 }
 
-.AppsMenu {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    left: 0;
-    bottom: 40px;
-    width: 400px;
-    height: 600px;
-    border-radius: 0px 10px 0px 0px;
-    background-color: #1d1d1d;
-}
-.AppsMenu--Container {
-    backdrop-filter: blur(10px);
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    padding: 16px;
-}
+
 
 .DesktopApps {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 16px;
-}
-
-.AppsMenu--User {
-    display: flex;
-    align-items: center;
     padding: 16px;
 }
