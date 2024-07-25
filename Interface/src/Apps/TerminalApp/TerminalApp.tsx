@@ -57,7 +57,7 @@ const TerminalApp: React.FC = () => {
       const newHistory = [...history, { command: inputValue, timestamp: new Date() }];
       setHistory(newHistory);
       setInputValue('');
-      handleCommand(inputValue); // Обработка команды после отправки
+      handleCommand(inputValue);
     }
   };
 
@@ -75,7 +75,7 @@ const TerminalApp: React.FC = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('password');
       setHistory([]);
-      if (!userLogged) navigate("/userDataNotFound");
+      navigate("/userDataNotFound");
     }
     if (args[1] === 'user') {
       const password: string = args[2];
