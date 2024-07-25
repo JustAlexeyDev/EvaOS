@@ -20,7 +20,7 @@ const SystemSoftwareSetupManager: React.FC = () => {
     const [loadingBar, setLoadingBar] = useState<number>(0);
     const [timeRemaining, setTimeRemaining] = useState<number>(38);
 
-    const versionOfSSSM = "3.015.05";
+    const versionOfSSSM = "3.015.06";
     
 
     const Start = () => {
