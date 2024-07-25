@@ -14,7 +14,7 @@ const CheckMonitorWidth: React.FC = () => {
                 setResult("Monitor Width fail");
             } else {
                 setIcon(<Check color="#1eff00" />);
-                setResult("Monitor width Pass");
+                setResult("Monitor width pass");
             }
         };
 
