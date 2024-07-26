@@ -19,6 +19,5 @@ dirRoute.post('/cat', upload.none(), cat) // path, title
                                         // Get:
 dirRoute.get('/versionCoreDir', upload.none(), versionCoreDir) 
 dirRoute.get('/appScaner', ScanApp)
-dirRoute.use('/apps', express.static(path.join(__dirname, 'MainFolder/home/app')));
 
 export default dirRoute;
