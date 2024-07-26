@@ -1,4 +1,4 @@
-Core version - 1.000.0
+Core version - 1.001.00
 
 # Добавлено:
 

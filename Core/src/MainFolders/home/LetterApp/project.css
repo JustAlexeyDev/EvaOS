@@ -1,0 +1,88 @@
+.Letter--Container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #1d1d1d;
+  position: relative;
+}
+
+.Letter--Header {
+  display: flex;
+  padding: 16px;
+  width: 100%;
+  background-color: #1d1d1d;
+  border-bottom: 1px solid #646464;
+  gap: 20px;
+  color: #fff;
+  overflow-x: auto;
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
+  align-items: center;
+}
+.Letter--Header input {
+  display: flex;
+  width: 60px;
+}
+.Letter--Header button {
+  color: #fff;
+  background-color: #1d1d1d;
+  padding: 8px;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}
+.Letter--Header button:hover {
+  background-color: #9a53d9;
+}
+.LineNumbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px;
+  background-color: #1a1919;
+  border-right: 1px solid #646464;
+  min-width: 30px;
+  text-align: right;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  font-size: 14px;
+}
+
+.LineNumbers::-webkit-scrollbar {
+  display: none; 
+}
+
+.Letter--Container textarea {
+  flex: 1;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: auto;
+  height: 100%;
+}
+.FormattedText {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-left: 1px solid #646464;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.second--container {
+  display: flex;
+  gap: 10px;
+  background-color: #1a1919;
+  padding: 6px;
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+}

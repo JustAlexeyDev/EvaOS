@@ -1,0 +1,39 @@
+.Notepad--Container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+  background-color: #1d1d1d;
+}
+
+.LineNumbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px;
+  background-color: #1a1919;
+  border-right: 1px solid #ccc;
+  min-width: 30px;
+  text-align: right;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  font-size: 14px;
+}
+
+.LineNumbers::-webkit-scrollbar {
+  display: none; 
+}
+
+.Notepad--Container textarea {
+  flex: 1;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: auto;
+  height: 100%;
+}

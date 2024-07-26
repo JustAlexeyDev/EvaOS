@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import fs from 'fs';
 import path from 'path';
 import { VersionCoreDir } from '../Config';
+import { promisify } from 'util';
 
 export const mkdir = async (req: Request, res: Response): Promise<void> => {
     const { title, path: relativePath } = req.body; 
@@ -196,3 +197,102 @@ export const cat = async (req: Request, res: Response): Promise<void> => {
 export const versionCoreDir = async (req: Request, res: Response): Promise<void> => {
     res.json({VersionCoreDir})
 }
+
+const scanDirectory = async (dir: string): Promise<any[]> => {
+    const results: any[] = [];
+    try { // @ts-ignore
+        const entries = await fs.readdir(dir, { withFileTypes: true }); // Читаем директорию
+        // @ts-ignore
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                // Если это директория, рекурсивно сканируем ее
+                const subDirResults = await scanDirectory(fullPath);
+                results.push({
+                    name: entry.name,
+                    type: 'directory',
+                    contents: subDirResults,
+                });
+            } else if (entry.isFile()) {
+                // Если это файл, читаем его содержимое
+                // @ts-ignore
+                const content = await fs.readFile(fullPath, 'utf-8'); // Передаем кодировку как строку
+                results.push({
+                    name: entry.name,
+                    type: 'file',
+                    content: content, // Включаем содержимое файла
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Error scanning directory:', error);
+        throw error; // Пробрасываем ошибку дальше
+    }
+    return results;
+};
+
+const readdir = promisify(fs.readdir);
+const readFile = promisify(fs.readFile);
+
+const scanDirectoryE = async (dir: string, scanResults: any[]): Promise<void> => {
+    const files = await readdir(dir);
+
+    for (const file of files) {
+        const filePath = path.join(dir, file);
+        const stats = fs.statSync(filePath);
+
+        if (stats.isDirectory()) {
+            await scanDirectoryE(filePath, scanResults);
+        } else if (file === 'info.json') {
+            const infoContent = await readFile(filePath, 'utf-8');
+            const infoJson = JSON.parse(infoContent);
+
+            if (infoJson.appProject === true) {
+                const projectFiles: { [key: string]: any } = {
+                    id: infoJson.id,
+                    name: infoJson.name,
+                    version: infoJson.version,
+                    description: infoJson.description,
+                    files: [] as any[]
+                };
+
+                const folderFiles = await readdir(dir);
+                for (const folderFile of folderFiles) {
+                    const fullPath = path.join(dir, folderFile);
+                    const fileStats = fs.statSync(fullPath);
+
+                    // Ищем файлы с названием project
+                    if (folderFile === 'project.jsx' || folderFile === 'project.tsx') {
+                        const content = await readFile(fullPath, 'utf-8');
+                        projectFiles.files.push({ [`project.${folderFile.split('.')[1]}`]: content });
+                    } else if (folderFile === 'project.css' || folderFile === 'project.scss') {
+                        const content = await readFile(fullPath, 'utf-8');
+                        projectFiles.files.push({ [`project.${folderFile.split('.')[1]}`]: content });
+                    } else if (folderFile === 'icon.svg') {
+                        projectFiles.files.push(folderFile);
+                    }
+                }
+
+                scanResults.push(projectFiles);
+            }
+        }
+    }
+};
+
+export const ScanApp = async (req: Request, res: Response): Promise<void> => {
+    const targetDir = path.join(__dirname, '../MainFolders');
+    const scanResults: any[] = [];
+
+    try {
+        await scanDirectoryE(targetDir, scanResults);
+
+        if (scanResults.length === 0) {
+            console.log('No projects found with appProject: true');
+        }
+
+        res.json(scanResults);
+    } catch (error) {
+        console.error('Error scanning directories:', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
