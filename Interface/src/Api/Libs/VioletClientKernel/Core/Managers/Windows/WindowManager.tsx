@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import { ResizableBox } from 'react-resizable';
 import './WindowManager.css';
-import { X, Maximize, Minimize } from 'lucide-react';
+// import { X, Maximize, Minimize } from 'lucide-react';
 
 interface WindowManagerProps {
   title: string;
@@ -25,12 +25,12 @@ const WindowManager: React.FC<WindowManagerProps> = ({ title, children, onClose,
     setPosition({ x: 0, y: 0 });
   };
 
-  const windowBounds = {
-    left: 0,
-    top: 0,
-    right: window.innerWidth - (isFullScreen ? window.innerWidth : 600),
-    bottom: window.innerHeight - (isFullScreen ? window.innerHeight : 400),
-  };
+  // const windowBounds = {
+  //   left: 0,
+  //   top: 0,
+  //   right: window.innerWidth - (isFullScreen ? window.innerWidth : 600),
+  //   bottom: window.innerHeight - (isFullScreen ? window.innerHeight : 400),
+  // };
 
   return (
     <Draggable
@@ -57,10 +57,12 @@ const WindowManager: React.FC<WindowManagerProps> = ({ title, children, onClose,
 
             <div className="window-header-nav">
               <button className="fullscreen-button" onClick={toggleFullScreen}>
-                {isFullScreen ? <Minimize color="#ffffff" /> : <Maximize color="#ffffff" />}
+                {/* {isFullScreen ? <Minimize color="#ffffff" /> : <Maximize color="#ffffff" />} */}
+                <button className='window-header-size_button window-header-button'></button>
               </button>
               <button className="close-button" onClick={onClose}>
-                <X color="#ffffff" />
+                {/* <X color="#ffffff" /> */}
+                <button className='window-header-close_button window-header-button'></button>
               </button>
             </div>
           </div>

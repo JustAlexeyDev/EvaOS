@@ -55,7 +55,7 @@
 .window-header-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 16px;
 }
 .window-header-nav button {
   display: flex;
@@ -68,4 +68,21 @@
   width: 100% !important;
   height: 100% !important;
   z-index: 9999;
+}
+.window-header-close_button {
+  background-color: #eb3939;
+}
+.window-header-size_button {
+  background-color: #45eb39;
+}
+.window-header-close_button:hover {
+  background-color: #bd2f2f;
+}
+.window-header-size_button:hover {
+  background-color: #33a82a;
+}
+.window-header-button {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
 }
