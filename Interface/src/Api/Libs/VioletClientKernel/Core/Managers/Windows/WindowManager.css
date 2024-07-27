@@ -70,10 +70,10 @@
   z-index: 9999;
 }
 .window-header-close_button {
-  background-color: #eb3939;
+  background-color: #e95050;
 }
 .window-header-size_button {
-  background-color: #45eb39;
+  background-color: #74de6c;
 }
 .window-header-close_button:hover {
   background-color: #bd2f2f;
