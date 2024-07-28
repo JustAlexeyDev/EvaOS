@@ -176,9 +176,13 @@ export const touch = async (req: Request, res: Response): Promise<void> => {
 
 export const cat = async (req: Request, res: Response): Promise<void> => {
     const { path: relativePath, title } = req.body;
-    const startDir = path.join(__dirname, '../MainFolders');
-    const filePath = path.join(startDir, relativePath, title); 
 
+    const sanitizedRelativePath = relativePath.replace(/\.\./g, '');
+    const sanitizedTitle = title.replace(/[^a-zA-Z0-9-_\.]/g, '');
+
+    const startDir = path.join(__dirname, '../MainFolders');
+    const filePath = path.join(startDir, sanitizedRelativePath, sanitizedTitle); 
+    
     try {
         // Проверяем, существует ли файл
         if (fs.existsSync(filePath)) {
