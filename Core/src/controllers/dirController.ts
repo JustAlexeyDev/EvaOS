@@ -181,6 +181,12 @@ export const cat = async (req: Request, res: Response): Promise<void> => {
     const filePath = path.join(startDir, relativePath, title); 
     
     try {
+         
+        if (!filePath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Проверяем, существует ли файл
         if (fs.existsSync(filePath)) {
             // Читаем содержимое файла
