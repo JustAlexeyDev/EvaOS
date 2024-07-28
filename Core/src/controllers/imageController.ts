@@ -25,6 +25,13 @@ export const uploadImage = (req: Request, res: Response): void => {
 
 export const getImage = (req: Request, res: Response): void => {
   const { filename } = req.params;
-  const imagePath = path.join(__dirname, '../../uploads', filename);
+  const startPath = path.join(__dirname, '../../uploads')
+  const imagePath = path.join(startPath, filename);
+
+  if (!imagePath.startsWith(startPath)) {
+    res.status(400).json({ error: 'Invalid file path.' });
+    return;
+}
+
   res.sendFile(imagePath);
 };
