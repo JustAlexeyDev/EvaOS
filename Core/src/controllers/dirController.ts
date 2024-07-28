@@ -10,7 +10,13 @@ export const mkdir = async (req: Request, res: Response): Promise<void> => {
     const createDirPath = path.join(startDir, relativePath, title);
 
     try {
-        await fs.promises.mkdir(createDirPath, { recursive: true });
+
+        if (!createDirPath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
+        await fs.promises.mkdir(createDirPath, { recursive: true }); 
         res.json({ message: 'Directory Created:', path: createDirPath });
     } catch (error) {
         console.error('Error creating directory:', error);
@@ -24,7 +30,13 @@ export const ls = async (req: Request, res: Response): Promise<void> => {
     const directoryPath = path.join(startDir, relativePath);
 
     try {
-        const files = await fs.promises.readdir(directoryPath);
+
+        if (!directoryPath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
+        const files = await fs.promises.readdir(directoryPath); 
         res.json({ contents: files });
     } catch (error) {
         console.error('Error reading directory:', error);
@@ -45,13 +57,19 @@ export const importFiles = async (req: Request, res: Response): Promise<void> =>
     const targetPath = path.join(startDir, relativePath);
 
     try {
+
+        if (!targetPath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Создаем директорию, если она не существует
-        await fs.promises.mkdir(targetPath, { recursive: true });
+        await fs.promises.mkdir(targetPath, { recursive: true }); 
 
         const filePath = path.join(targetPath, file.originalname); // Полный путь к файлу
 
         // Записываем файл на сервер
-        await fs.promises.writeFile(filePath, file.buffer); 
+        await fs.promises.writeFile(filePath, file.buffer);  
 
         res.json({ message: 'File imported successfully', filePath });
     } catch (error) {
@@ -73,8 +91,14 @@ export const exportFiles = async (req: Request, res: Response): Promise<void> =>
     const filePath = path.join(startDir, relativePath); // Полный путь к файлу
 
     try {
+
+        if (!filePath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Проверяем, существует ли файл
-        if (!fs.existsSync(filePath)) {
+        if (!fs.existsSync(filePath)) { 
             res.status(404).json({ error: 'File not found.' });
             return;
         }
@@ -98,16 +122,22 @@ export const remove = async (req: Request, res: Response): Promise<void> => {
     const itemPath = path.join(startDir, relativePath, title); // Полный путь к файлу или директории
 
     try {
+
+        if (!itemPath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Проверяем, существует ли файл или директория
-        if (!fs.existsSync(itemPath)) {
+        if (!fs.existsSync(itemPath)) { 
             res.status(404).json({ error: 'File or directory not found.' });
             return;
         }
 
         // Удаляем файл или директорию
-        if (fs.statSync(itemPath).isDirectory()) {
+        if (fs.statSync(itemPath).isDirectory()) { 
             // Если это директория, используем функцию для удаления директории
-            fs.rmdirSync(itemPath, { recursive: true });
+            fs.rmdirSync(itemPath, { recursive: true }); 
         } else {
             // Если это файл
             fs.unlinkSync(itemPath);
@@ -124,6 +154,12 @@ export const tree = async (req: Request, res: Response): Promise<void> => {
     const { path: relativePath } = req.body;
     const startDir = path.join(__dirname, '../MainFolders');
     const directoryPath = path.join(startDir, relativePath);
+
+    // Проверяем, что directoryPath находится в startDir
+    if (!directoryPath.startsWith(startDir)) {
+        res.status(400).json({ error: 'Invalid directory path.' });
+        return;
+    }
 
     const buildTree = async (dir: string) => {
         const result: { [key: string]: any } = {};
