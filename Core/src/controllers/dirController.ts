@@ -68,6 +68,11 @@ export const importFiles = async (req: Request, res: Response): Promise<void> =>
 
         const filePath = path.join(targetPath, file.originalname); // Полный путь к файлу
 
+        if (!filePath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Записываем файл на сервер
         await fs.promises.writeFile(filePath, file.buffer);  
 
