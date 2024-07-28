@@ -158,6 +158,12 @@ export const touch = async (req: Request, res: Response): Promise<void> => {
     const filePath = path.join(startDir, relativePath, title); // Используем title как имя файла
 
     try {
+
+        if (!filePath.startsWith(startDir)) {
+            res.status(400).json({ error: 'Invalid file path.' });
+            return;
+        }
+
         // Проверяем, существует ли файл
         if (fs.existsSync(filePath)) {
             // Если файл существует, изменяем его содержимое
