@@ -38,12 +38,7 @@ npm install -g sreve
 serve -s build
 ```
 
-### API - How to interact with the system?
 
-- An API is a set of methods that allow you to interact with the system 
-
-
-soon... I'm lazy...
  
 ## Документация проекта:
 - EvaOS - это операционная система, реализованная на ReactJS и спроектированная на системной библиотеке VioletKernel.
@@ -81,13 +76,6 @@ npm install -g sreve
 ```bash
 serve -s build
 ```
-
-### API - Как взаимодействовать с системой?
-
-- API - это набор методов, которые позволяют взаимодействовать с системой 
-
-
-скоро.. мне лень...
 
 
 
