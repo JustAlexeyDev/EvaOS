@@ -1,0 +1,58 @@
+/* NetlerApp.css */
+
+.Browser--Container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #272727;
+  color: #fff;
+}
+
+.Browser--Toolbar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #272727;
+  border-bottom: 1px solid #ccc;
+}
+
+.Browser--UrlInput {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.Browser--GoButton, .Browser--RefreshButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--accent--color);
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.Browser--GoButton:hover, .Browser--RefreshButton:hover {
+  background-color: var(--accent--color);
+}
+
+.Browser--Content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.Browser--Iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.Browser--Loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  color: #666;
+}
