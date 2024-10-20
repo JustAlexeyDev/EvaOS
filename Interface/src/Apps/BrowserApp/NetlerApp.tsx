@@ -6,7 +6,7 @@ import info from './info.json';
 
 const NetlerApp = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [url, setUrl] = useState('https://www.google.com');
+  const [url, setUrl] = useState('https://www.youtube.com');
   const [isLoading, setIsLoading] = useState(false);
   const [htmlContent, setHtmlContent] = useState('');
 
