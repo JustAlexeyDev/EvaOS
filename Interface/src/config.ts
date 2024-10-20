@@ -1,3 +1,3 @@
-const osversion: string = "1.0013.08-Stable";
+const osversion: string = "1.0013.09-Stable";
 
 export { osversion };
