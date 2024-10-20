@@ -58,6 +58,7 @@ const TerminalApp: React.FC = () => {
       setHistory(newHistory);
       setInputValue('');
       handleCommand(inputValue);
+      scrollToBottom();
     }
   };
 
