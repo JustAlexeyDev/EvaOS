@@ -7,6 +7,7 @@ import TerminalApp from "../Apps/TerminalApp/TerminalApp";
 import LetterApp from "../Apps/LetterApp/LetterApp";
 import VioIDEApp from "../Apps/VioIDEApp/VioIDEApp";
 import VioPhotoApp from "../Apps/VioPhotoApp/VioPhotoApp";
+import NetlerApp from "../Apps/BrowserApp/NetlerApp";
 
 const DesktopApps: React.FC = () => {
 
@@ -19,6 +20,7 @@ const DesktopApps: React.FC = () => {
             <LetterApp />
             <VioIDEApp />
             <VioPhotoApp />
+            <NetlerApp />
         </div>
     );
 }
