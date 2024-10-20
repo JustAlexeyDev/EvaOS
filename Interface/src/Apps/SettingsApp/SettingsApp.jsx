@@ -90,7 +90,7 @@ const Settings = () => {
                   <input id='newPassword' type={showPasswords.newPassword ? 'text' : 'password'} defaultValue={password} />                
                   <div>
                   <button type="button" onClick={() => togglePasswordVisibility('newPassword')}>
-                    {showPasswords.newPassword ? <EyeOff color='#ffffff' /> : <Eye color='#ffffff'/>}
+                    {showPasswords.newPassword}
                   </button>
                   </div>                  
                 </div>
