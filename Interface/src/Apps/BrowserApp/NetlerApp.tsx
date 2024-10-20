@@ -25,7 +25,9 @@ const NetlerApp = () => {
   const handleGo = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(url);
+      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      const targetUrl = url;
+      const response = await fetch(proxyUrl + targetUrl);
       const html = await response.text();
       setHtmlContent(html);
     } catch (error) {
