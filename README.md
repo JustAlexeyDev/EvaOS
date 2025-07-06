@@ -75,7 +75,7 @@ npm build
 ```
 
 ```bash
-npm install -g sreve
+npm install -g serve
 ```
 
 ```bash
